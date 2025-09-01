@@ -5,6 +5,7 @@
   <title>پنل مدیریت درخشان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.rtl.css" rel="stylesheet">
   <style>
     body {font-family:Vazir,Tahoma,sans-serif;background:#f9f9f9;direction:rtl;color:#222;margin:0;}
     .container {max-width:900px;margin:40px auto;background:#fff;border-radius:18px;box-shadow:0 2px 20px #0001;padding:34px 20px 20px 20px;}
@@ -12,7 +13,7 @@
     label {display:block;margin:18px 0 7px 0;font-weight:bold;}
     input, textarea {width:100%;padding:10px 12px;border-radius:7px;border:1px solid #bbb;font-family:inherit;font-size:1.04rem;background:#fafafa;box-sizing:border-box;resize:vertical;}
     textarea {min-height:70px;}
-    button {background:#00bfa5;color:#fff;padding:11px 32px;border-radius:9px;border:none;margin:20px 0 0 0;font-size:1.07rem;font-family:inherit;cursor:pointer;font-weight:bold;transition:background .2s;}
+    button {background:#00bfa5;color:#fff;padding:11px 32px;border-radius:9px;border:none;margin:14px 0 0 0;font-size:1.07rem;font-family:inherit;cursor:pointer;font-weight:bold;transition:background .2s;}
     button:hover {background:#ff6f00;}
     .section {margin-bottom:28px;}
     .gallery-list {margin-top:7px;}
@@ -23,6 +24,13 @@
     .row{display:flex;gap:20px;align-items:center;justify-content:space-between;}
     @media (max-width: 900px) {.container{padding:18px 2vw;}.row{flex-direction:column;gap:10px;}}
     .login-box {max-width:340px;margin:80px auto 0 auto;background:#fff;padding:32px 22px;border-radius:14px;box-shadow:0 2px 16px #0002;}
+    .editor-container{direction:rtl;text-align:right;}
+    .ql-editor{text-align:right;direction:rtl;}
+    .ql-toolbar{direction:rtl;}
+    .posts-list{margin:16px 0;}
+    .post-item{background:#f5f5f5;padding:8px 12px;border-radius:7px;margin:4px 0;display:flex;align-items:center;justify-content:space-between;}
+    .post-item-title{font-weight:bold;}
+    .del-btn{background:#e53935;color:#fff;border:none;padding:3px 13px;border-radius:6px;cursor:pointer;}
   </style>
 </head>
 <body>
@@ -76,15 +84,30 @@
     <button type="button" onclick="updateSite()">ثبت و بروزرسانی سایت</button>
     <div class="msg" id="msg"></div>
   </form>
+
+  <!-- بخش پست جدید -->
+  <div class="section" style="border-top:1px solid #eee;padding-top:18px;margin-top:36px;">
+    <h2>ایجاد پست جدید</h2>
+    <label>عنوان پست:</label>
+    <input id="postTitle" placeholder="عنوان پست">
+    <label>محتوای پست (متن + عکس + استایل):</label>
+    <div id="postEditor" class="editor-container"></div>
+    <button type="button" onclick="savePost()">ذخیره پست جدید</button>
+    <div class="msg" id="postMsg"></div>
+    <h3 style="margin:30px 0 12px 0;color:#444;">لیست پست‌ها:</h3>
+    <div class="posts-list" id="postsList"></div>
+  </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
 <script>
-// رمز عبور مدیریت (حتماً تغییر دهید!)
 const CORRECT_PASS = "yourStrongAdminPass123";
 const owner = "rezawin8410-ux";
 const repo = "mderakhshan.github.io";
 const file = "index.html";
+const postsPath = "posts/";
 
-// Base64 مخصوص UTF-8 برای متن فارسی
+// --- Base64 فارسی ---
 function b64EncodeUnicode(str) {
   return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
     function(match, p1) { return String.fromCharCode('0x' + p1); }
@@ -107,6 +130,7 @@ function doLogin() {
   document.getElementById('loginBox').style.display='none';
   document.getElementById('adminPanel').style.display='block';
   fetchCurrent();
+  fetchPosts();
 }
 function logout(){
   localStorage.removeItem("d_admin");
@@ -119,6 +143,7 @@ function checkLogin(){
     document.getElementById('loginBox').style.display='none';
     document.getElementById('adminPanel').style.display='block';
     fetchCurrent();
+    fetchPosts();
   }else{
     document.getElementById('loginBox').style.display='block';
     document.getElementById('adminPanel').style.display='none';
@@ -209,6 +234,120 @@ function updateSite(){
       } else {
         document.getElementById('msg').innerHTML = '<span style="color:red">خطا در ثبت تغییرات! توکن یا دسترسی اشتباه است.</span>';
       }
+    });
+  });
+}
+
+// --- ادیتور حرفه‌ای پست ---
+var quill = new Quill('#postEditor', {
+  theme: 'snow',
+  placeholder: 'متن، عکس، لینک و هرچیزی که دوست دارید بنویسید...',
+  modules: {
+    toolbar: [
+      ['bold','italic','underline','strike'],
+      [{'header':[1,2,3,false]}],
+      [{'list':'ordered'},{'list':'bullet'}],
+      ['link','image'],
+      [{'align':[]}],
+      ['clean']
+    ]
+  }
+});
+
+// --- ذخیره پست جدید ---
+function savePost(){
+  let token = sessionStorage.getItem("github_token");
+  let title = document.getElementById('postTitle').value.trim();
+  let content = quill.root.innerHTML;
+  if(!title||!content||content==='') {
+    document.getElementById('postMsg').innerHTML = '<span class="error">لطفا عنوان و محتوای پست را وارد کنید.</span>';
+    return;
+  }
+  let slug = 'post-' + Date.now();
+  let html =
+`<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>${title}</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+  <style>body{font-family:Vazir,Tahoma,sans-serif;max-width:780px;margin:30px auto 0 auto;background:#fafafa;direction:rtl;color:#222;line-height:2;padding:24px;}
+    h1,h2,h3{color:#00bfa5;}
+    img{max-width:100%;border-radius:10px;margin:8px 0;}
+    a{color:#039be5;}
+  </style>
+</head>
+<body>
+  <h1>${title}</h1>
+  <hr>
+  ${content}
+</body>
+</html>`;
+  document.getElementById('postMsg').innerHTML = 'در حال ذخیره...';
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}${slug}.html`,{
+    method:'PUT',
+    headers:{Authorization:'token '+token,'Content-Type':'application/json'},
+    body:JSON.stringify({
+      message:`ایجاد پست جدید: ${title}`,
+      content:b64EncodeUnicode(html)
+    })
+  })
+  .then(r=>r.json())
+  .then(res=>{
+    if(res.content){
+      document.getElementById('postMsg').innerHTML = '<span style="color:green">✅ پست جدید با موفقیت ذخیره شد.</span>';
+      document.getElementById('postTitle').value = '';
+      quill.setContents([]);
+      fetchPosts();
+    } else{
+      document.getElementById('postMsg').innerHTML = '<span style="color:red">خطا در ذخیره پست!</span>';
+    }
+  });
+}
+
+// --- نمایش لیست پست‌ها ---
+function fetchPosts(){
+  let token = sessionStorage.getItem("github_token");
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}`,{
+    headers:{Authorization:'token '+token}
+  })
+  .then(r=>r.json())
+  .then(list=>{
+    if(Array.isArray(list)){
+      let out = '';
+      list.forEach(item=>{
+        if(item.name.endsWith('.html')){
+          let title = item.name.replace('.html','');
+          out += `<div class="post-item">
+                    <span class="post-item-title">${title}</span>
+                    <a target="_blank" href="posts/${item.name}">مشاهده</a>
+                    <button class="del-btn" onclick="deletePost('${item.name}')">حذف</button>
+                  </div>`;
+        }
+      });
+      document.getElementById('postsList').innerHTML = out||'<span>هیچ پستی هنوز ثبت نشده.</span>';
+    }
+  });
+}
+function deletePost(fname){
+  let token = sessionStorage.getItem("github_token");
+  if(!confirm("آیا مطمئن هستید؟")) return;
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}${fname}`,{
+    headers:{Authorization:'token '+token}
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}${fname}`,{
+      method:'DELETE',
+      headers:{Authorization:'token '+token,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:`حذف پست ${fname}`,
+        sha:data.sha
+      })
+    })
+    .then(r=>r.json())
+    .then(res=>{
+      fetchPosts();
     });
   });
 }

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>پنل مدیریت حرفه‌ای درخشان</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+  <style>
+    body {background:#f9f9f9;font-family:Vazir,Tahoma,sans-serif;}
+    .container{max-width:880px;margin:30px auto;background:#fff;border-radius:16px;box-shadow:0 2px 16px #0002;padding:32px;}
+    h2{color:#00bfa5;margin-bottom:12px;}
+    label{display:block;margin:14px 0 4px;}
+    input,textarea{width:100%;padding:8px 10px;border:1px solid #aaa;border-radius:6px;margin-bottom:12px;}
+    textarea{min-height:80px;}
+    button{background:#00bfa5;color:#fff;padding:10px 30px;border-radius:9px;border:none;margin:18px 0 0 0;font-size:1.1rem;font-family:inherit;cursor:pointer;}
+    button:hover{background:#ff6f00;}
+    .section{margin-bottom:28px;}
+    .gallery-list img{height:50px;margin:3px;border-radius:6px;}
+    .login-box{max-width:340px;margin:80px auto 0 auto;background:#fff;padding:32px 28px;border-radius:14px;box-shadow:0 2px 16px #0002;}
+    .msg{margin:16px 0 0 0;}
+    .logout-btn{background:#ff5252;color:#fff;}
+    .row{display:flex;gap:20px;}
+    @media(max-width:800px){.row{flex-direction:column;}}
+  </style>
+</head>
+<body>
+<div id="loginBox" class="login-box" style="display:none">
+  <h2>ورود مدیر</h2>
+  <label>رمز عبور مدیریت</label>
+  <input type="password" id="adminPass" placeholder="رمز عبور">
+  <label>GitHub Token (محرمانه)</label>
+  <input type="password" id="githubToken" placeholder="توکن خصوصی گیت‌هاب">
+  <button onclick="doLogin()">ورود</button>
+  <div class="msg" id="loginMsg"></div>
+</div>
+
+<div class="container" id="adminPanel" style="display:none">
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <h2>مدیریت محتوای سایت درخشان</h2>
+    <button class="logout-btn" onclick="logout()">خروج</button>
+  </div>
+  <form id="adminForm">
+    <div class="section">
+      <label>عنوان صفحه (title)</label>
+      <input id="siteTitle">
+    </div>
+    <div class="section">
+      <label>شعار اصلی (هدر)</label>
+      <input id="heroTitle">
+      <label>توضیح هدر</label>
+      <input id="heroDesc">
+    </div>
+    <div class="section">
+      <label>لیست قیمت‌ها (هر خط: عنوان|قیمت قبلی|قیمت جدید)</label>
+      <textarea id="prices"></textarea>
+    </div>
+    <div class="section">
+      <label>آدرس تصاویر گالری (هر خط یک لینک)</label>
+      <textarea id="gallery"></textarea>
+      <div class="gallery-list" id="galleryPreview"></div>
+    </div>
+    <div class="section">
+      <label>توضیح اهمیت شستشو</label>
+      <textarea id="importance"></textarea>
+    </div>
+    <div class="section">
+      <label>نظرات مشتریان (هر خط یک نظر)</label>
+      <textarea id="reviews"></textarea>
+    </div>
+    <div class="section">
+      <label>اطلاعات تماس (HTML مجاز)</label>
+      <textarea id="contact"></textarea>
+    </div>
+    <button type="button" onclick="updateSite()">ثبت و بروزرسانی سایت</button>
+    <div class="msg" id="msg"></div>
+  </form>
+</div>
+<script>
+const CORRECT_PASS = "yourStrongAdminPass123"; // رمز عبور مدیریت - حتماً تغییر دهید
+const owner = "rezawin8410-ux";
+const repo = "mderakhshan.github.io";
+const file = "index.html";
+
+function sha256(str) {
+  // ساده برای رمز عبور، کافی برای این سناریو
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function doLogin() {
+  let pass = document.getElementById("adminPass").value.trim();
+  let token = document.getElementById("githubToken").value.trim();
+  if(pass!==CORRECT_PASS) {
+    document.getElementById('loginMsg').innerText="رمز اشتباه است.";
+    return;
+  }
+  if(!token||token.length<30) {
+    document.getElementById('loginMsg').innerText="توکن گیت‌هاب معتبر وارد کنید.";
+    return;
+  }
+  localStorage.setItem("d_admin", sha256(pass));
+  sessionStorage.setItem("github_token", token);
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('adminPanel').style.display='block';
+  fetchCurrent();
+}
+function logout(){
+  localStorage.removeItem("d_admin");
+  sessionStorage.removeItem("github_token");
+  location.reload();
+}
+function checkLogin(){
+  let p = localStorage.getItem("d_admin");
+  if(p===sha256(CORRECT_PASS)){
+    document.getElementById('loginBox').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    fetchCurrent();
+  }else{
+    document.getElementById('loginBox').style.display='block';
+    document.getElementById('adminPanel').style.display='none';
+  }
+}
+checkLogin();
+
+function fetchCurrent(){
+  let token = sessionStorage.getItem("github_token");
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
+    headers: { Authorization: 'token ' + token }
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    let html = atob(data.content.replace(/\n/g,''));
+    // پراپرتی‌ها را از html بکش
+    document.getElementById('siteTitle').value = html.match(/<title>(.*?)<\/title>/)?.[1]||"";
+    document.getElementById('heroTitle').value = html.match(/<section class="hero">[\s\S]*?<h2>(.*?)<\/h2>/)?.[1]||"";
+    document.getElementById('heroDesc').value = html.match(/<section class="hero">[\s\S]*?<p>(.*?)<\/p>/)?.[1]||"";
+    let prices = [...html.matchAll(/<div class="price-item"><span>(.*?)<\/span><span><span class="original">(.*?)<\/span> → <span class="final">(.*?)<\/span><\/span><\/div>/g)]
+      .map(m=>`${m[1]}|${m[2]}|${m[3]}`).join('\n');
+    document.getElementById('prices').value = prices;
+    let gallery = [...html.matchAll(/<figure>[\s\S]*?<img src="(.*?)"/g)].map(m=>m[1]).join('\n');
+    document.getElementById('gallery').value = gallery;
+    let importance = html.match(/<section id="importance">[\s\S]*?<div class="importance-scroll">(.*?)<\/div>/)?.[1]?.replace(/<br>/g,"\n")||"";
+    document.getElementById('importance').value = importance;
+    let reviews = [...html.matchAll(/<div class="testimonial-card">(.*?)<\/div>/g)].map(m=>m[1]).join('\n');
+    document.getElementById('reviews').value = reviews;
+    let contact = html.match(/<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>([\s\S]*?)<\/div>/)?.[1]||"";
+    document.getElementById('contact').value = contact.replace(/^\s+|\s+$/g,"");
+    document.getElementById('msg').innerHTML = '';
+    // گالری پیش‌نمایش
+    previewGallery();
+  });
+}
+// پیش‌نمایش گالری
+function previewGallery(){
+  let imgs = document.getElementById('gallery').value.trim().split('\n').map(src=>src?`<img src="${src}">`:'').join('');
+  document.getElementById('galleryPreview').innerHTML = imgs;
+}
+document.getElementById('gallery').addEventListener('input', previewGallery);
+
+// آپدیت فایل index.html روی گیت‌هاب
+function updateSite(){
+  let token = sessionStorage.getItem("github_token");
+  if(!token){alert("ورود مجدد انجام دهید");return;}
+  document.getElementById('msg').innerHTML = 'در حال بروزرسانی...';
+  // دریافت SHA برای commit
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
+    headers: { Authorization: 'token ' + token }
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    let sha = data.sha;
+    let base = atob(data.content.replace(/\n/g,''));
+
+    // ساخت قیمت‌ها
+    let pricesArr = document.getElementById('prices').value.trim().split('\n').filter(x=>x);
+    let pricesHTML = pricesArr.map(row=>{
+      let [title, oldp, newp] = row.split('|');
+      return `<div class="price-item"><span>${title}</span><span><span class="original">${oldp}</span> → <span class="final">${newp}</span></span></div>`;
+    }).join('\n');
+    // گالری
+    let galleryArr = document.getElementById('gallery').value.trim().split('\n').filter(x=>x);
+    let galleryHTML = galleryArr.map(src=>`
+      <figure>
+        <img src="${src}" alt="نمونه کار">
+        <span class="brand-glow">مبل‌شویی درخشان</span>
+      </figure>
+    `).join('\n');
+    // نظرات
+    let reviewsArr = document.getElementById('reviews').value.trim().split('\n').filter(x=>x);
+    let reviewsHTML = reviewsArr.map(txt=>`<div class="testimonial-card">${txt}</div>`).join('\n');
+
+    // مقداردهی فیلدها
+    let newHtml = base
+      .replace(/<title>.*?<\/title>/, `<title>${document.getElementById('siteTitle').value}</title>`)
+      .replace(/(<section class="hero">[\s\S]*?<h2>)(.*?)(<\/h2>)/, `$1${document.getElementById('heroTitle').value}$3`)
+      .replace(/(<section class="hero">[\s\S]*?<p>)(.*?)(<\/p>)/, `$1${document.getElementById('heroDesc').value}$3`)
+      .replace(/<div class="price-table">[\s\S]*?<\/div>/, `<div class="price-table">\n${pricesHTML}\n</div>`)
+      .replace(/<div class="gallery-grid">[\s\S]*?<\/div>/, `<div class="gallery-grid">\n${galleryHTML}\n</div>`)
+      .replace(/<div class="importance-scroll">[\s\S]*?<\/div>/, `<div class="importance-scroll">${document.getElementById('importance').value.replace(/\n/g,"<br>")}</div>`)
+      .replace(/<div class="testimonial-grid">[\s\S]*?<\/div>/, `<div class="testimonial-grid">\n${reviewsHTML}\n</div>`)
+      .replace(/(<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>)[\s\S]*?(<\/div>)/, `$1${document.getElementById('contact').value}$2`);
+
+    // آپدیت فایل در مخزن
+    let encoded = btoa(unescape(encodeURIComponent(newHtml)));
+    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
+      method: 'PUT',
+      headers: { Authorization: 'token ' + token, 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        message: 'بروزرسانی خودکار سایت از پنل مدیریت',
+        content: encoded,
+        sha: sha
+      })
+    })
+    .then(r=>r.json())
+    .then(res=>{
+      if(res.content){
+        document.getElementById('msg').innerHTML = '<span style="color:green">✅ تغییرات با موفقیت ثبت شد.<br>سایت شما تا چند دقیقه دیگر بروزرسانی می‌شود.</span>';
+      } else {
+        document.getElementById('msg').innerHTML = '<span style="color:red">خطا در ثبت تغییرات! توکن یا دسترسی اشتباه است.</span>';
+      }
+    });
+  });
+}
+</script>
+</body>
+</html>

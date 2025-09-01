@@ -2,103 +2,48 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>پنل مدیریت درخشان</title>
+  <title>پنل مدیریت پیشرفته درخشان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.rtl.css" rel="stylesheet">
+  <link href="https://cdnhttps://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.rtl.css" rel="stylesheet">
   <style>
-    body {font-family:Vazir,Tahoma,sans-serif;background:#f9f9f9;direction:rtl;color:#222;margin:0;}
-    .container {max-width:900px;margin:40px auto;background:#fff;border-radius:18px;box-shadow:0 2px 20px #0001;padding:34px 20px 20px 20px;}
-    h2 {color:#00bfa5;margin-bottom:14px;font-size:1.55rem;}
-    label {display:block;margin:18px 0 7px 0;font-weight:bold;}
-    input, textarea {width:100%;padding:10px 12px;border-radius:7px;border:1px solid #bbb;font-family:inherit;font-size:1.04rem;background:#fafafa;box-sizing:border-box;resize:vertical;}
-    textarea {min-height:70px;}
-    button {background:#00bfa5;color:#fff;padding:11px 32px;border-radius:9px;border:none;margin:14px 0 0 0;font-size:1.07rem;font-family:inherit;cursor:pointer;font-weight:bold;transition:background .2s;}
-    button:hover {background:#ff6f00;}
-    .section {margin-bottom:28px;}
-    .gallery-list {margin-top:7px;}
-    .gallery-list img {height:52px;margin:2px;border-radius:7px;border:1px solid #eee;box-shadow:0 2px 8px #0001;}
-    .msg {margin:18px 0 0 0;}
-    .error {color:#d32f2f;}
-    .logout-btn {background:#ff5252;color:#fff;float:left;}
+    body{font-family:Vazir,Tahoma,sans-serif;background:#f9f9f9;direction:rtl;color:#222;margin:0;}
+    .container{max-width:950px;margin:40px auto;background:#fff;border-radius:18px;box-shadow:0 2px 18px #0002;padding:34px 16px 30px 16px;}
+    h2{color:#00bfa5;margin-bottom:14px;font0 7px 0;font-weight:bold;}
+    input,textarea,select{
+      width:100%;padding:8px 10px;border-radius:7px;border:1px solid #bbb;font-family:inherit;font-size:1rem;background:#fafafa;box-sizing:border-box;margin-bottom:6px;resize13px;border-radius:4px;}
+    .del-btn{background:#e53935;}
+    .del-btn:hover{background:#ba1a1a;}
+    .edit-btn,.up-btn,.down-btn,.reply-btn{background:#fff1e3;color:#b34c00;border:1px solid #ffbf7d;}
+    .edit-btn:hover,.up-btn:hover,.down-btn:hover,.reply-btn:hover{background:#ffbf7d;}
+    ul{margin:0 0 7px 0;padding:0;list-style:none;}
+    li{margin-bottom:7px;}
+    .flex{display .msg{margin:14px 0 0 0;}
+    .error{color:#d32f2f;}
+    .logout-btn{background:#ff5252;color:#fff;}
     .row{display:flex;gap:20px;align-items:center;justify-content:space-between;}
-    @media (max-width: 900px) {.container{padding:18px 2vw;}.row{flex-direction:column;gap:10px;}}
-    .login-box {max-width:340px;margin:80px auto 0 auto;background:#fff;padding:32px 22px;border-radius:14px;box-shadow:0 2px 16px #0002;}
-    .editor-container{direction:rtl;text-align:right;}
-    .ql-editor{text-align:right;direction:rtl;}
-    .ql-toolbar{direction:rtl;}
-    .posts-list{margin:16px 0;}
-    .post-item{background:#f5f5f5;padding:8px 12px;border-radius:7px;margin:4px 0;display:flex;align-items:center;justify-content:space-between;}
-    .post-item-title{font-weight:bold;}
-    .del-btn{background:#e53935;color:#fff;border:none;padding:3px 13px;border-radius:6px;cursor:pointer;}
-  </style>
+    .ql-editor,.ql-toolbar{direction:rtl;text-align:right;}
+    .posts-list{margin:12px 0;}
+    .post-item{background:#f5f5f5;padding:6px 10px;border-radius:7px;margin:4px 0;display:flex;align-items:center;justify-content0 auto;background:#fff;padding:32px 22px;border-radius:14px;box-shadow:0 2px 16px #0002;}
+    .replybox{background:#f5f5f5;padding:10px;border-radius:7px;}
+    @media(max-width:950px){.container>
 </head>
 <body>
-<div id="loginBox" class="login-box" style="display:none">
-  <h2 style="font-size:1.3rem">ورود مدیر سایت</h2>
-  <label>رمز عبور مدیریت:</label>
-  <input type="password" id="adminPass" placeholder="رمز عبور">
+<div id="loginBox" class="login-box">
+  <h2>ورود مدیر</h2>
+  <label>رمز مدیریت:</label>
+  <input id="adminPass" type="password" placeholder="رمز عبور">
   <label>توکن GitHub (محرمانه):</label>
-  <input type="password" id="githubToken" placeholder="توکن خصوصی گیت‌هاب">
+  <input id="githubToken" type="password" placeholder="توکن گیت‌هاب">
   <button onclick="doLogin()">ورود</button>
   <div class="msg error" id="loginMsg"></div>
 </div>
-
-<div class="container" id="adminPanel" style="display:none">
-  <div class="row">
-    <h2 style="margin:0 0 0 0;">مدیریت سایت درخشان</h2>
-    <button class="logout-btn" onclick="logout()">خروج</button>
+<div class="" onclick="logout()">خروج</button>
   </div>
-  <form id="adminForm">
-    <div class="section">
-      <label>عنوان صفحه (title):</label>
-      <input id="siteTitle">
-    </div>
-    <div class="section">
-      <label>شعار اصلی (هدر):</label>
-      <input id="heroTitle">
-      <label>توضیح هدر:</label>
-      <input id="heroDesc">
-    </div>
-    <div class="section">
-      <label>لیست قیمت‌ها (هر خط: عنوان|قیمت قبلی|قیمت جدید):</label>
-      <textarea id="prices"></textarea>
-    </div>
-    <div class="section">
-      <label>آدرس تصاویر گالری (هر خط یک لینک):</label>
-      <textarea id="gallery"></textarea>
-      <div class="gallery-list" id="galleryPreview"></div>
-    </div>
-    <div class="section">
-      <label>توضیح اهمیت شستشو:</label>
-      <textarea id="importance"></textarea>
-    </div>
-    <div class="section">
-      <label>نظرات مشتریان (هر خط یک نظر):</label>
-      <textarea id="reviews"></textarea>
-    </div>
-    <div class="section">
-      <label>اطلاعات تماس (HTML مجاز):</label>
-      <textarea id="contact"></textarea>
-    </div>
-    <button type="button" onclick="updateSite()">ثبت و بروزرسانی سایت</button>
-    <div class="msg" id="msg"></div>
-  </form>
-
-  <!-- بخش پست جدید -->
-  <div class="section" style="border-top:1px solid #eee;padding-top:18px;margin-top:36px;">
-    <h2>ایجاد پست جدید</h2>
-    <label>عنوان پست:</label>
-    <input id="postTitle" placeholder="عنوان پست">
-    <label>محتوای پست (متن + عکس + استایل):</label>
-    <div id="postEditor" class="editor-container"></div>
-    <button type="button" onclick="savePost()">ذخیره پست جدید</button>
-    <div class="msg" id="postMsg"></div>
-    <h3 style="margin:30px 0 12px 0;color:#444;">لیست پست‌ها:</h3>
-    <div class="posts-list" id="postsList"></div>
+  <div id="mainSections">
+    <!-- بخش‌ها در اسکریپت به صورت پویا اضافه می‌شوند -->
   </div>
 </div>
-
+<!-- Quill Editor -->
 <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
 <script>
 const CORRECT_PASS = "yourStrongAdminPass123";
@@ -106,16 +51,27 @@ const owner = "rezawin8410-ux";
 const repo = "mderakhshan.github.io";
 const file = "index.html";
 const postsPath = "posts/";
+const feedbacksFile:'after_header',txt:'بعد از هدر'},
+  {val:'after_hero',txt:'بعد از بخش قهرمان'},
+  {val:'after_prices',txt:'بعد از قیمت‌ها'},
+  {val:'after_gallery',txt:'بعد از گالری'},
+  {val:'after_importance',txt:'بعد از اهمیت شستشو'},
+  {val:'after_reviews',txt:'بعد از نظرات'},
+  {val:'footer',txt:'قبل از فوتر'},
+  {val:'end_body',txt:'انتهای صفحه'}
+];
 
 // --- Base64 فارسی ---
 function b64EncodeUnicode(str) {
-  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-    function(match, p1) { return String.fromCharCode('0x' + p1); }
+  returnCode('0x' + p1); }
   ));
 }
-function sha256(str) { return btoa(unescape(encodeURIComponent(str))); }
-function doLogin() {
-  let pass = document.getElementById("adminPass").value.trim();
+function b64DecodeUnicode(str) {
+  return decodeURIComponent(Array.prototype.map.call(atob(str), c=>{
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+}
+functionvalue.trim();
   let token = document.getElementById("githubToken").value.trim();
   if(pass!==CORRECT_PASS) {
     document.getElementById('loginMsg').innerText="رمز اشتباه است.";
@@ -128,13 +84,7 @@ function doLogin() {
   localStorage.setItem("d_admin", sha256(pass));
   sessionStorage.setItem("github_token", token);
   document.getElementById('loginBox').style.display='none';
-  document.getElementById('adminPanel').style.display='block';
-  fetchCurrent();
-  fetchPosts();
-}
-function logout(){
-  localStorage.removeItem("d_admin");
-  sessionStorage.removeItem("github_token");
+Item("github_token");
   location.reload();
 }
 function checkLogin(){
@@ -142,8 +92,7 @@ function checkLogin(){
   if(p===sha256(CORRECT_PASS)){
     document.getElementById('loginBox').style.display='none';
     document.getElementById('adminPanel').style.display='block';
-    fetchCurrent();
-    fetchPosts();
+    initAll();
   }else{
     document.getElementById('loginBox').style.display='block';
     document.getElementById('adminPanel').style.display='none';
@@ -151,6 +100,46 @@ function checkLogin(){
 }
 checkLogin();
 
+function initAll(){
+  document.getElementById('mainSections').innerHTML = `
+ ="galleryEdit"></div>
+  <div id="pricesEdit"></div>
+  <div id="reviewsEdit"></div>
+  <div id="customScriptsSection"></div>
+  <div id="postsSection"></div>
+  <div id="imgUploadSection"></div>
+  <div id="feedbackSection"></div>
+  `;
+  renderSiteEdit();
+  renderGalleryEdit();
+  renderPricesEdit();
+  renderReviewsEdit();
+  renderCustomScripts();
+  renderPostsSection();
+  renderImgUpload();
+  renderFeedbackSection();
+}
+
+//////////////////// بخش 1: ویرایش سایت /////////////////////
+function renderSiteEdit(){
+  document>
+    <input id="siteTitle">
+    <label>شعار اصلی (هدر):</label>
+    <input id="heroTitle">
+    <label>توضیح هدر:</label>
+    <input id="heroDesc">
+    <label>توضیح اهمیت شستشو:</label>
+    <textarea id="importance"></textarea>
+    <label>اطلاعات تماس (HTML مجاز):</label>
+    <textarea id="contact"></textarea>
+    <button onclick="updateSite()">ثبت و بروزرسانی سایت</button>
+    <div class="msg" id="msgSite"></div>
+  </div>
+  `;
+  fetchCurrent();
+}
+
+Base='';
 function fetchCurrent(){
   let token = sessionStorage.getItem("github_token");
   fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
@@ -158,109 +147,209 @@ function fetchCurrent(){
   })
   .then(r=>r.json())
   .then(data=>{
-    let html = decodeURIComponent(escape(window.atob(data.content.replace(/\n/g,''))));
-    document.getElementById('siteTitle').value = html.match(/<title>(.*?)<\/title>/)?.[1]||"";
-    document.getElementById('heroTitle').value = html.match(/<section class="hero">[\s\S]*?<h2>(.*?)<\/h2>/)?.[1]||"";
-    document.getElementById('heroDesc').value = html.match(/<section class="hero">[\s\S]*?<p>(.*?)<\/p>/)?.[1]||"";
-    let prices = [...html.matchAll(/<div class="price-item"><span>(.*?)<\/span><span><span class="original">(.*?)<\/span> → <span class="final">(.*?)<\/span><\/span><\/div>/g)]
-      .map(m=>`${m[1]}|${m[2]}|${m[3]}`).join('\n');
-    document.getElementById('prices').value = prices;
-    let gallery = [...html.matchAll(/<figure>[\s\S]*?<img src="(.*?)"/g)].map(m=>m[1]).join('\n');
-    document.getElementById('gallery').value = gallery;
-    let importance = html.match(/<section id="importance">[\s\S]*?<div class="importance-scroll">(.*?)<\/div>/)?.[1]?.replace(/<br>/g,"\n")||"";
+    htmlBase = b64DecodeUnicode(data.content.replace(/\n/g,''));
+    document.getElementById('siteTitle').value = htmlBase.match(/<title>(.*?)<\/title>/)?.[1]||"";
+    document.getElementById('heroTitle').value = htmlBase.match(/<section class="<section class="hero">[\s\S]*?<p>(.*?)<\/p>/)?.[1]||"";
+    let importance = htmlBase.match(/<section id="importance">[\s\S]*?<div class="importance-scroll">(.*?)<\/div>/)?.[1]?.replace(/<br>/g,"\n")||"";
     document.getElementById('importance').value = importance;
-    let reviews = [...html.matchAll(/<div class="testimonial-card">(.*?)<\/div>/g)].map(m=>m[1]).join('\n');
-    document.getElementById('reviews').value = reviews;
-    let contact = html.match(/<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>([\s\S]*?)<\/div>/)?.[1]||"";
-    document.getElementById('contact').value = contact.replace(/^\s+|\s+$/g,"");
-    document.getElementById('msg').innerHTML = '';
-    previewGallery();
+    let contact = htmlBase.match(/<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>([\s\S]*?)<\/div>/)?.[1]||"";
+^\s+|\s+$/g,"");
+    // سایر بخش‌ها در توابع خودشان لود می‌شوند
   });
 }
-function previewGallery(){
-  let imgs = document.getElementById('gallery').value.trim().split('\n').map(src=>src?`<img src="${src}">`:'').join('');
-  document.getElementById('galleryPreview').innerHTML = imgs;
-}
-document.getElementById('gallery').addEventListener('input', previewGallery);
 
 function updateSite(){
   let token = sessionStorage.getItem("github_token");
   if(!token){alert("ورود مجدد انجام دهید");return;}
-  document.getElementById('msg').innerHTML = 'در حال بروزرسانی...';
+  document.getElementById('msgSite').innerHTML = 'در حال بروزرسانی...';
   fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
     headers: { Authorization: 'token ' + token }
   })
   .then(r=>r.json())
   .then(data=>{
-    let sha = data.sha;
-    let base = decodeURIComponent(escape(window.atob(data.content.replace(/\n/g,''))));
-    let pricesArr = document.getElementById('prices').value.trim().split('\n').filter(x=>x);
-    let pricesHTML = pricesArr.map(row=>{
-      let [title, oldp, newp] = row.split('|');
-      return `<div class="price-item"><span>${title}</span><span><span class="original">${oldp}</span> → <span class="final">${newp}</span></span></div>`;
-    }).join('\n');
-    let galleryArr = document.getElementById('gallery').value.trim().split('\n').filter(x=>x);
-    let galleryHTML = galleryArr.map(src=>`
-      <figure>
-        <img src="${src}" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    `).join('\n');
-    let reviewsArr = document.getElementById('reviews').value.trim().split('\n').filter(x=>x);
-    let reviewsHTML = reviewsArr.map(txt=>`<div class="testimonial-card">${txt}</div>`).join('\n');
-    let newHtml = base
-      .replace(/<title>.*?<\/title>/, `<title>${document.getElementById('siteTitle').value}</title>`)
+    let<title>.*?<\/title>/, `<title>${document.getElementById('siteTitle').value}</title>`)
       .replace(/(<section class="hero">[\s\S]*?<h2>)(.*?)(<\/h2>)/, `$1${document.getElementById('heroTitle').value}$3`)
       .replace(/(<section class="hero">[\s\S]*?<p>)(.*?)(<\/p>)/, `$1${document.getElementById('heroDesc').value}$3`)
-      .replace(/<div class="price-table">[\s\S]*?<\/div>/, `<div class="price-table">\n${pricesHTML}\n</div>`)
-      .replace(/<div class="gallery-grid">[\s\S]*?<\/div>/, `<div class="gallery-grid">\n${galleryHTML}\n</div>`)
-      .replace(/<div class="importance-scroll">[\s\S]*?<\/div>/, `<div class="importance-scroll">${document.getElementById('importance').value.replace(/\n/g,"<br>")}</div>`)
-      .replace(/<div class="testimonial-grid">[\s\S]*?<\/div>/, `<div class="testimonial-grid">\n${reviewsHTML}\n</div>`)
-      .replace(/(<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>)[\s\S]*?(<\/div>)/, `$1${document.getElementById('contact').value}$2`);
+      .replace(/<div class="importance-scroll">[\s\S]*?<\/div(<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>)[\s\S]*?(<\/div>)/, `$1${document.getElementById('contact').value}$2`);
     let encoded = b64EncodeUnicode(newHtml);
     fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
       method: 'PUT',
       headers: { Authorization: 'token ' + token, 'Content-Type':'application/json' },
       body: JSON.stringify({
-        message: 'بروزرسانی خودکار سایت از پنل مدیریت',
+        message: 'بروزرسانی سایت',
         content: encoded,
-        sha: sha
-      })
-    })
-    .then(r=>r.json())
+       =>r.json())
     .then(res=>{
       if(res.content){
-        document.getElementById('msg').innerHTML = '<span style="color:green">✅ تغییرات با موفقیت ثبت شد.<br>سایت شما تا چند دقیقه دیگر بروزرسانی می‌شود.</span>';
+        document.getElementById('msgSite').innerHTML = '<span style="color:green">✅ با موفقیت ثبت شد.</span>';
       } else {
-        document.getElementById('msg').innerHTML = '<span style="color:red">خطا در ثبت تغییرات! توکن یا دسترسی اشتباه است.</span>';
+        document.getElementById('msgSite').innerHTML = '<span style="color:red">خطا در ثبت تغییرات!</span>';
       }
     });
   });
 }
 
-// --- ادیتور حرفه‌ای پست ---
-var quill = new Quill('#postEditor', {
-  theme: 'snow',
-  placeholder: 'متن، عکس، لینک و هرچیزی که دوست دارید بنویسید...',
-  modules: {
-    toolbar: [
-      ['bold','italic','underline','strike'],
-      [{'header':[1,2,3,false]}],
-      [{'list':'ordered'},{'list':'bullet'}],
-      ['link','image'],
-      [{'align':[]}],
-      ['clean']
-    ]
-  }
-});
+//////////////////// بخش 2: مدیریت گالری /////////////////////
+let galleryData=[];
+function renderGalleryEdit(){
+  document.getElementById('galleryEdit').innerHTML = `
+  <div class="section">
+    <h3زودن عکس جدید</button>
+  </div>`;
+  loadGallery();
+}
+function loadGallery(){
+  let m = htmlBase.match(/<div class="gallery-grid">([\s\S]*?)<\/div>/);
+  if(!m){galleryData=[];renderGalleryList();return;}
+  galleryData = [...m[1].matchAll(/<img src="(.*?)"/g)].map(x=>({url:x[1]}));
+  renderGalleryList();
+}
+function renderGalleryList(){
+  let ul = document.getElementById('galleryList');
+  if(!ul) return;
+  ul.innerHTML = '';
+  gallery class="gallery-thumb" src="${item.url}"/>
+      <input value="${item.url}" onchange="editGallery(${i},this.value)">
+      <button class="del-btn" onclick="removeGallery(${i})">حذف</button>
+      <button class="up-btn" onclick="moveGallery(${i},-1)">↑</button>
+      <button class="down-btn" onclick="moveGallery(${i},1)">↓</button>
+    </li>`;
+  });
+}
+function addGalleryItem(){ galleryData.push({url:''}); renderGalleryList(); }
+function editGallery(i,val){ galleryData[i].url=val return;
+  [galleryData[i],galleryData[i+dir]] = [galleryData[i+dir],galleryData[i]];
+  renderGalleryList();
+}
 
-// --- ذخیره پست جدید ---
+//////////////////// بخش 3: مدیریت قیمت‌ها /////////////////////
+let pricesData=[];
+function renderPricesEdit(){
+  document.getElementById('pricesEdit').innerHTML = `
+  <div class="section">
+    <h3>مدیریت قیمت‌ها</h3>
+    <ul id="pricesList"></ul>
+    <button class="mini-btn" onclick="addPriceItem()">افزودن قیمت جدید</button>
+  </div>`;
+  loadPrices();
+}
+functionm){pricesData=[];renderPricesList();return;}
+  pricesData = [...m[1].matchAll(/<div class="price-item"><span>(.*?)<\/span><span><span class="original">(.*?)<\/span> → <span class="final">(.*?)<\/span><\/span><\/div>/g)]
+    .map(x=>.title}" onchange="editPrice(${i},'title',this.value)">
+      <input style="width:18%;" value="${item.old}" onchange="editPrice(${i},'old',this.value)">
+      <input style="width:18%;" value="${item.new}" onchange="editPrice(${i},'new',this.value)">
+      <button class="del-btn" onclick="removePrice(${i})">حذف</button>
+      <button class="up-btn" onclick="movePrice(${i},-1)">↑</button>
+      <button class="down-btn" onclick="movePrice(${i},1)">↓.push({title:'',old:'',new:''}); renderPricesList(); }
+function editPrice(i,field,val){ pricesData[i][field]=val; }
+function removePrice(i){ pricesData.splice(i,1); renderPricesList(); }
+function movePrice(i,dir){
+  if(i+dir<0||i+dir>=pricesData.length) return;
+  [pricesData[i],pricesData[i+dir]] = [pricesData[i+dir],pricesData[i]];
+  renderPricesList();
+}
+
+//////////////////// بخش 4: مدیریت نظرات /////////////////////
+let reviewsData=[];
+function renderReviewsEdit(){
+  document.getElementBy="section">
+    <h3>مدیریت نظرات مشتریان</h3>
+    <ul id="reviewsList"></ul>
+    <button class="mini-btn" onclick="addReviewItem()">افزودن نظر جدید</button>
+  </div>`;
+  loadReviews();
+}
+function loadReviews(){
+  let m = htmlBase.match(/<div class="testimonial-grid">([\s\S]*?)<\/div>/);
+  if(!m){reviewsData=[];renderReviewsList();return;}
+  reviewsData = [...m[1].matchAll(/<div class="testimonial-card">(.*?)<\/div>/g)].map(x=>({txt:x[1]}));
+  renderReviewsList();
+}
+function renderReviewsList(){
+    ul.innerHTML += `<li class="flex">
+      <input style="width:68%;" value="${item.txt}" onchange="editReview(${i},this.value)">
+      <button class="del-btn" onclick="removeReview(${i})">حذف</button>
+      <button class="up-btn" onclick="moveReview(${i},-1)">↑</button>
+      <button class="down-btn" onclick="moveReview(${i},1)">↓</button>
+    </li>`;
+  });
+}
+function addReviewItem(){ reviewsData.push({txt:''}); renderReviewsList(); }
+function editReview(i,val){ reviews }
+function moveReview(i,dir){
+  if(i+dir<0||i+dir>=reviewsData.length) return;
+  [reviewsData[i],reviewsData[i+dir]] = [reviewsData[i+dir],reviewsData[i]];
+  renderReviewsList();
+}
+
+//////////////////// بخش 5: اسکریپت/کد دلخواه /////////////////////
+let customScripts = [];
+function renderCustomScripts(){
+  document.getElementById('customScriptsSection').innerHTML = `
+  <div class="section">
+    <h3>درج کد یا اسکریپت دلخواه</h3>
+    <ul id=".getItem("github_token");
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${scriptsFile}`, {
+    headers: { Authorization: 'token ' + token }
+  })
+  .then(r=>r.json()).then(data=>{
+    if(data && data.content){
+      customScripts = JSON.parse(b64DecodeUnicode(data.content));
+    }else{
+      customScripts=[];
+    }
+    renderScriptsList();
+  }).catch(()=>{customScripts=[];renderScriptsList();});
+}
+function renderScriptsList(){
+  let ul = document.getElementById('scriptsList');
+  if(!ul) return;
+  ul.innerHTML''}" onchange="editScript(${i},'name',this.value)" placeholder="نام دلخواه">
+      <select class="code-place-select" onchange="editScript(${i},'place',this.value)">
+        ${places.map(p=>`<option value="${p.val}"${item.place==p.val?' selected':''}>${p.txt}</option>`).join('')}
+      </select>
+      <textarea style="width:38%;" onchange="editScript(${i},'code',this.value)" placeholder="کد دلخواه">${item.code||''}</textarea>
+      <button class="del-btn" onclick="removeScript(${(); }
+function editScript(i,field,val){ customScripts[i][field]=val; }
+function removeScript(i){ customScripts.splice(i,1); renderScriptsList(); }
+
+//////////////////// بخش 6: مدیریت پست و آپلود عکس /////////////////////
+function renderPostsSection(){
+  document.getElementById('postsSection').innerHTML=`
+  <div class="section">
+    <h3>پست‌های سایت</h3>
+    <label>عنوان پست:</label>
+    <input id="postTitle" placeholder="عنوان پست">
+    <label>محتوای پست با ویرایشگر پیشخیره پست جدید</button>
+    <div class="msg" id="postMsg"></div>
+    <h4>لیست پست‌ها:</h4>
+    <div class="posts-list" id="postsList"></div>
+  </div>`;
+  setTimeout(()=>initQuill(),200); // صبر کن تا DOM ساخته شود
+  fetchPosts();
+}
+let quill;
+function initQuill(){
+  if(document.getElementById('postEditor')){
+    quill = new Quill('#postEditor', {
+      theme: 'snow',
+      placeholder: 'متن، عکس، لینک و هرچ'],
+          [{'header':[1,2,3,false]}],
+          [{'list':'ordered'},{'list':'bullet'}],
+          ['link','image'],
+          [{'align':[]}],
+          ['clean']
+        ]
+      }
+    });
+  }
+}
 function savePost(){
   let token = sessionStorage.getItem("github_token");
   let title = document.getElementById('postTitle').value.trim();
   let content = quill.root.innerHTML;
   if(!title||!content||content==='') {
-    document.getElementById('postMsg').innerHTML = '<span class="error">لطفا عنوان و محتوای پست را وارد کنید.</span>';
+    document.getElementById('postMsg').innerHTML = '<span class="error">لطفاً عنوان و مح کنید.</span>';
     return;
   }
   let slug = 'post-' + Date.now();
@@ -271,9 +360,7 @@ function savePost(){
   <meta charset="UTF-8">
   <title>${title}</title>
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
-  <style>body{font-family:Vazir,Tahoma,sans-serif;max-width:780px;margin:30px auto 0 auto;background:#fafafa;direction:rtl;color:#222;line-height:2;padding:24px;}
-    h1,h2,h3{color:#00bfa5;}
-    img{max-width:100%;border-radius:10px;margin:8px 0;}
+  <style>body{font-family:Vazir,Tahoma,sans-serif;max-width:780px;margin:30px auto 0 auto;background:#fafafa;%;border-radius:10px;margin:8px 0;}
     a{color:#039be5;}
   </style>
 </head>
@@ -288,14 +375,7 @@ function savePost(){
     method:'PUT',
     headers:{Authorization:'token '+token,'Content-Type':'application/json'},
     body:JSON.stringify({
-      message:`ایجاد پست جدید: ${title}`,
-      content:b64EncodeUnicode(html)
-    })
-  })
-  .then(r=>r.json())
-  .then(res=>{
-    if(res.content){
-      document.getElementById('postMsg').innerHTML = '<span style="color:green">✅ پست جدید با موفقیت ذخیره شد.</span>';
+      message:`ایجادیت ذخیره شد.</span>';
       document.getElementById('postTitle').value = '';
       quill.setContents([]);
       fetchPosts();
@@ -304,8 +384,6 @@ function savePost(){
     }
   });
 }
-
-// --- نمایش لیست پست‌ها ---
 function fetchPosts(){
   let token = sessionStorage.getItem("github_token");
   fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}`,{
@@ -313,11 +391,7 @@ function fetchPosts(){
   })
   .then(r=>r.json())
   .then(list=>{
-    if(Array.isArray(list)){
-      let out = '';
-      list.forEach(item=>{
-        if(item.name.endsWith('.html')){
-          let title = item.name.replace('.html','');
+    let title = item.name.replace('.html','');
           out += `<div class="post-item">
                     <span class="post-item-title">${title}</span>
                     <a target="_blank" href="posts/${item.name}">مشاهده</a>
@@ -331,10 +405,7 @@ function fetchPosts(){
 }
 function deletePost(fname){
   let token = sessionStorage.getItem("github_token");
-  if(!confirm("آیا مطمئن هستید؟")) return;
-  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}${fname}`,{
-    headers:{Authorization:'token '+token}
-  })
+  if(!confirm("آیا  })
   .then(r=>r.json())
   .then(data=>{
     fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsPath}${fname}`,{
@@ -351,6 +422,77 @@ function deletePost(fname){
     });
   });
 }
+
+//////////////////// بخش 7: آپلود عکس با Postimages /////////////////////
+function renderImgUpload(){
+  document.getElementById('Postimages()">آپلود و دریافت لینک</button>
+    <input type="text" id="imgUrl" readonly style="margin-top:10px">
+    <div class="msg" id="imgUploadMsg"></div>
+  </div>`;
+}
+function uploadImagePostimages() {
+  let file = document.getElementById('imgUpload').files[0];
+  if(!file) return alert('عکسی انتخاب نشده!');
+  let data = new FormData();
+  data.append('image', file);
+  fetch('https://api.imgbb.com/1/upload?key=4e7e798c3e9e=>{
+    if(res.data && res.data.url){
+      document.getElementById('imgUrl').value = res.data.url;
+      document.getElementById('imgUploadMsg').innerHTML = 'لینک مستقیم: <span class="codeblock">'+res.data.url+'</span>';
+    }
+  });
+}
+
+//////////////////// بخش 8: پیام کاربر و پاسخ ادمین /////////////////////
+function renderFeedbackSection(){
+  document.getElementById('feedbackSection').innerHTML=`
+  <div class="section">
+    <h3>پیام‌ها و درخواست‌های کاربران</h3>
+    <div id="feedbackList"></token '+token}
+  })
+  .then(r=>r.json()).then(data=>{
+    let arr=[];
+    if(data && data.content) arr = JSON.parse(b64DecodeUnicode(data.content));
+    renderFeedbackList(arr,data.sha);
+  }).catch(()=>{renderFeedbackList([],null)});
+}
+function renderFeedbackList(arr,sha){
+  let d = document.getElementById('feedbackList');
+  if(!d) return;
+  if(!arr.length){d.innerHTML='<span>پیامی ثبت نشده.</span>';return;}
+  d.innerHTML = arr.map((msg,i)=>`
+    <div style="margin:8px </a>':''}
+      <div class="replybox">
+        <label>پاسخ ادمین:</label>
+        <textarea onchange="replyToFeedback(${i},this.value)">${msg.reply||''}</textarea>
+      </div>
+      <button class="del-btn" onclick="deleteFeedback(${iowner}/${repo}/contents/${feedbacksFile}`,{
+      method:'PUT',
+      headers:{Authorization:'token '+token,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:'پاسخ به پیام کاربر',
+        content:b64EncodeUnicode(JSON.stringify(arr)),
+        sha:data.sha
+      })
+    });
+  });
+}
+function deleteFeedback(idx,sha){
+  let token = sessionStorage.getItem("github_token");
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${feedbacksFile}`,{
+    headers:{Authorization:'token '+token}
+  })
+  .then(r=>r.json()).thentoken,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:'حذف پیام کاربر',
+        content:b64EncodeUnicode(JSON.stringify(arr)),
+        sha:data.sha
+      })
+    })
+    .then(()=>fetchFeedbacks());
+  });
+}
+
 </script>
 </body>
 </html>

@@ -2,82 +2,27 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>پنل مدیریت حرفه‌ای درخشان</title>
+  <title>پنل مدیریت درخشان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
   <style>
-    body {
-      font-family: Vazir, Tahoma, sans-serif;
-      background: #f9f9f9;
-      direction: rtl;
-      color: #222;
-      margin: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 2px 20px #0001;
-      padding: 34px 20px 20px 20px;
-    }
-    h2 {
-      color: #00bfa5;
-      margin-bottom: 14px;
-      font-size: 1.55rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-    label {
-      display: block;
-      margin: 18px 0 7px 0;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 7px;
-      border: 1px solid #bbb;
-      font-family: inherit;
-      font-size: 1.04rem;
-      background: #fafafa;
-      box-sizing: border-box;
-      resize: vertical;
-    }
-    textarea { min-height: 70px; }
-    button {
-      background: #00bfa5;
-      color: #fff;
-      padding: 11px 32px;
-      border-radius: 9px;
-      border: none;
-      margin: 20px 0 0 0;
-      font-size: 1.07rem;
-      font-family: inherit;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background .2s;
-    }
-    button:hover { background: #ff6f00; }
-    .section { margin-bottom: 28px; }
-    .gallery-list { margin-top: 7px; }
-    .gallery-list img { height: 52px; margin: 2px; border-radius: 7px; border:1px solid #eee; box-shadow:0 2px 8px #0001;}
-    .msg { margin: 18px 0 0 0; color: #00796b; font-weight: bold; }
-    .error { color: #d32f2f; }
-    .logout-btn { background: #ff5252; color: #fff; float: left; }
+    body {font-family:Vazir,Tahoma,sans-serif;background:#f9f9f9;direction:rtl;color:#222;margin:0;}
+    .container {max-width:900px;margin:40px auto;background:#fff;border-radius:18px;box-shadow:0 2px 20px #0001;padding:34px 20px 20px 20px;}
+    h2 {color:#00bfa5;margin-bottom:14px;font-size:1.55rem;}
+    label {display:block;margin:18px 0 7px 0;font-weight:bold;}
+    input, textarea {width:100%;padding:10px 12px;border-radius:7px;border:1px solid #bbb;font-family:inherit;font-size:1.04rem;background:#fafafa;box-sizing:border-box;resize:vertical;}
+    textarea {min-height:70px;}
+    button {background:#00bfa5;color:#fff;padding:11px 32px;border-radius:9px;border:none;margin:20px 0 0 0;font-size:1.07rem;font-family:inherit;cursor:pointer;font-weight:bold;transition:background .2s;}
+    button:hover {background:#ff6f00;}
+    .section {margin-bottom:28px;}
+    .gallery-list {margin-top:7px;}
+    .gallery-list img {height:52px;margin:2px;border-radius:7px;border:1px solid #eee;box-shadow:0 2px 8px #0001;}
+    .msg {margin:18px 0 0 0;}
+    .error {color:#d32f2f;}
+    .logout-btn {background:#ff5252;color:#fff;float:left;}
     .row{display:flex;gap:20px;align-items:center;justify-content:space-between;}
-    @media (max-width: 900px) {
-      .container{padding: 18px 2vw;}
-      .row{flex-direction:column;gap:10px;}
-    }
-    .login-box {
-      max-width: 340px;
-      margin: 80px auto 0 auto;
-      background: #fff;
-      padding: 32px 22px;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px #0002;
-    }
+    @media (max-width: 900px) {.container{padding:18px 2vw;}.row{flex-direction:column;gap:10px;}}
+    .login-box {max-width:340px;margin:80px auto 0 auto;background:#fff;padding:32px 22px;border-radius:14px;box-shadow:0 2px 16px #0002;}
   </style>
 </head>
 <body>
@@ -133,13 +78,18 @@
   </form>
 </div>
 <script>
-// رمز عبور مدیریت سایت (حتماً تغییر دهید!)
+// رمز عبور مدیریت (حتماً تغییر دهید!)
 const CORRECT_PASS = "yourStrongAdminPass123";
 const owner = "rezawin8410-ux";
 const repo = "mderakhshan.github.io";
 const file = "index.html";
 
-// رمزگذاری ساده (کافیست برای این منظور)
+// Base64 مخصوص UTF-8 برای متن فارسی
+function b64EncodeUnicode(str) {
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+    function(match, p1) { return String.fromCharCode('0x' + p1); }
+  ));
+}
 function sha256(str) { return btoa(unescape(encodeURIComponent(str))); }
 function doLogin() {
   let pass = document.getElementById("adminPass").value.trim();
@@ -183,7 +133,7 @@ function fetchCurrent(){
   })
   .then(r=>r.json())
   .then(data=>{
-    let html = atob(data.content.replace(/\n/g,''));
+    let html = decodeURIComponent(escape(window.atob(data.content.replace(/\n/g,''))));
     document.getElementById('siteTitle').value = html.match(/<title>(.*?)<\/title>/)?.[1]||"";
     document.getElementById('heroTitle').value = html.match(/<section class="hero">[\s\S]*?<h2>(.*?)<\/h2>/)?.[1]||"";
     document.getElementById('heroDesc').value = html.match(/<section class="hero">[\s\S]*?<p>(.*?)<\/p>/)?.[1]||"";
@@ -218,7 +168,7 @@ function updateSite(){
   .then(r=>r.json())
   .then(data=>{
     let sha = data.sha;
-    let base = atob(data.content.replace(/\n/g,''));
+    let base = decodeURIComponent(escape(window.atob(data.content.replace(/\n/g,''))));
     let pricesArr = document.getElementById('prices').value.trim().split('\n').filter(x=>x);
     let pricesHTML = pricesArr.map(row=>{
       let [title, oldp, newp] = row.split('|');
@@ -242,7 +192,7 @@ function updateSite(){
       .replace(/<div class="importance-scroll">[\s\S]*?<\/div>/, `<div class="importance-scroll">${document.getElementById('importance').value.replace(/\n/g,"<br>")}</div>`)
       .replace(/<div class="testimonial-grid">[\s\S]*?<\/div>/, `<div class="testimonial-grid">\n${reviewsHTML}\n</div>`)
       .replace(/(<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>)[\s\S]*?(<\/div>)/, `$1${document.getElementById('contact').value}$2`);
-    let encoded = btoa(unescape(encodeURIComponent(newHtml)));
+    let encoded = b64EncodeUnicode(newHtml);
     fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
       method: 'PUT',
       headers: { Authorization: 'token ' + token, 'Content-Type':'application/json' },

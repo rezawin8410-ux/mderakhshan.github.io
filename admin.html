@@ -1,273 +1,224 @@
 <!DOCTYPE html>
-<html lang="fa-IR" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>درخشان – شستشوی مبل و تشک در محل ارومیه</title>
+  <title>پنل مدیریت حرفه‌ای درخشان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="شستشوی حرفه‌ای مبل، فرش و تشک با تضمین رضایت و قیمت شفاف در ارومیه. خدمات فوری، خشک‌شویی بدون جابجایی، هدیه لکه‌بر نانو.">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
   <style>
-    :root { --primary:#00bfa5;--accent:#ff6f00;--text:#004d40;--bg:#e0f7fa; }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Vazir',Tahoma,sans-serif;}
-    body{background:var(--bg);color:var(--text);line-height:1.9;}
-    a{text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    header{background:var(--primary);color:#fff;padding:18px 0;position:sticky;top:0;z-index:1000;box-shadow:0 1px 8px #0001}
-    .header-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
-    nav ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap;}
-    nav a{color:#fff;text-decoration:none;font-weight:600;transition:.3s}
-    nav a:hover{color:var(--accent);}
-    .hero{background:linear-gradient(135deg,var(--primary),#00897b);color:#fff;min-height:52vh;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 1px 16px #0002;}
-    .hero h2{font-size:clamp(2rem,5vw,2.8rem);margin-bottom:15px;}
-    .cta-button{background:var(--accent);color:#fff;padding:13px 28px;border-radius:50px;font-size:1.15rem;text-decoration:none;font-weight:700;transition:background .2s;}
-    .cta-button:hover{background-color:#ff9100;}
-    .price-table{display:grid;gap:12px;margin-top:38px;font-size:1.08rem;}
-    .price-item{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:15px;padding:15px 25px;box-shadow:0 6px 18px rgba(0,0,0,.08);}
-    .original{text-decoration:line-through;color:#777}
-    .final{color:var(--primary);font-weight:700;font-size:1.15rem}
-    .referral-section{background:#fff1e3;margin:38px 0 0 0;padding:34px 20px;border-radius:18px;box-shadow:0 2px 12px #ff6f0033}
-    .referral-section ul{padding-right:20px;margin:18px auto;text-align:right;max-width:380px;}
-    .referral-section li{margin-bottom:8px;}
-    .referral-section h2{color:var(--accent);font-size:1.6rem;margin-bottom:15px;}
-    .referral-section .code{background:#ffe0b2;padding:4px 8px;border-radius:8px;font-weight:700;}
-    /* گالری */
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;position:relative;}
-    .gallery-grid figure{position:relative;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.09);}
-    .gallery-grid img{width:100%;height:220px;object-fit:cover;}
-    .brand-glow{font-size:1.05rem;font-weight:700;color:#fff;background:rgba(0,191,165,.7);padding:5px 10px;border-radius:8px;position:absolute;bottom:10px;right:10px;animation:glow 2s ease-in-out infinite;}
-    @keyframes glow{0%{text-shadow:0 0 5px #ffd700, 0 0 10px #ffd700}50%{text-shadow:0 0 10px #ffd700,0 0 20px #ffd700,0 0 30px #ff6f00}100%{text-shadow:0 0 5px #ffd700,0 0 10px #ffd700}}
-    /* اسکرول سوالات */
-    .importance-scroll{height:260px;overflow-y:scroll;border-radius:15px;background:#fff;color:var(--text);padding:18px 20px;font-size:1.08rem;line-height:2;box-shadow:0 2px 10px #0001;}
-    /* نظرات */
-    .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;}
-    .testimonial-card{background:#fff;border-right:4px solid var(--accent);border-radius:15px;padding:19px 21px;font-size:.97rem;box-shadow:0 4px 14px rgba(0,0,0,.05);}
-    /* تماس */
-    .contact-container{display:flex;justify-content:center;align-items:flex-start;margin-top:36px;}
-    .contact-container>div{background:#fff;border-radius:15px;box-shadow:0 2px 14px #0001;padding:23px 22px;min-width:270px;}
-    .contact-container h3{color:var(--primary);}
-    .contact-container a.cta-button{display:inline-block;margin-top:12px;}
-    footer{background:#00897b;color:#fff;padding:38px 0 22px 0;text-align:center;margin-top:32px;}
-    footer .container{max-width:720px;}
-    @media(max-width:700px){
-      .header-content{flex-direction:column;align-items:flex-start;gap:10px;}
-      nav ul{gap:10px;}
-      .hero{min-height:32vh;}
-      .importance-scroll{height:auto;}
-      .contact-container{flex-direction:column;align-items:center;}
-    }
+    body {background:#f9f9f9;font-family:Vazir,Tahoma,sans-serif;}
+    .container{max-width:880px;margin:30px auto;background:#fff;border-radius:16px;box-shadow:0 2px 16px #0002;padding:32px;}
+    h2{color:#00bfa5;margin-bottom:12px;}
+    label{display:block;margin:14px 0 4px;}
+    input,textarea{width:100%;padding:8px 10px;border:1px solid #aaa;border-radius:6px;margin-bottom:12px;}
+    textarea{min-height:80px;}
+    button{background:#00bfa5;color:#fff;padding:10px 30px;border-radius:9px;border:none;margin:18px 0 0 0;font-size:1.1rem;font-family:inherit;cursor:pointer;}
+    button:hover{background:#ff6f00;}
+    .section{margin-bottom:28px;}
+    .gallery-list img{height:50px;margin:3px;border-radius:6px;}
+    .login-box{max-width:340px;margin:80px auto 0 auto;background:#fff;padding:32px 28px;border-radius:14px;box-shadow:0 2px 16px #0002;}
+    .msg{margin:16px 0 0 0;}
+    .logout-btn{background:#ff5252;color:#fff;}
+    .row{display:flex;gap:20px;}
+    @media(max-width:800px){.row{flex-direction:column;}}
   </style>
 </head>
 <body>
-
-<!-- بخش معرفی دوستان -->
-<section class="referral-section container">
-  <h2>🎁 دوست‌یابی رایگان!</h2>
-  <p style="font-size:1.1rem;line-height:2;color:var(--text)">
-    دوستان خود را با <strong>کد معرف «درخشان»</strong> به ما معرفی کن و مبل رایگان بگیر:
-    <span class="code">
-      کد معرف: <span style="color:#ff6f00">DERAKHSHAN</span>
-    </span>
-  </p>
-  <ul>
-    <li>هر نفر معرفی‌شده = یک <strong>نفــره مبل رایگان</strong> برای شما</li>
-    <li>معرفی ۸ نفر = یک دست مبل <strong>۸ نفره کاملاً رایگان</strong></li>
-    <li>بدون محدودیت تعداد معرفی‌ها</li>
-  </ul>
-  <a href="#contact" class="cta-button" style="margin-top:20px">همین حالا شروع کن</a>
-</section>
-
-<header>
-  <div class="container header-content">
-    <div style="font-weight:700;font-size:1.4rem;color:var(--accent)">درخشان ارومیه</div>
-    <nav>
-      <ul>
-        <li><a href="#prices">قیمت‌ها</a></li>
-        <li><a href="#gallery">گالری</a></li>
-        <li><a href="#importance">چرا بشوریم؟</a></li>
-        <li><a href="#reviews">نظرات</a></li>
-        <li><a href="#contact">تماس</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div>
-    <h2>مبل، تشک، فرش → مثل روز اولش کن!</h2>
-    <p>بدون جابجایی، با تضمین رضایت 💯٪؛ اگر خوشت نیومد پول نمی‌گیریم.</p>
-    <a href="#contact" class="cta-button">همین حالا تماس بگیر</a>
-  </div>
-</section>
-
-<section id="prices">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px">قیمت‌ها با تخفیف مخصوص این ماه</h2>
-    <div class="price-table">
-<div class="price-item"><span>هر نفره مبل</span><span><span class="original">۱۲۵,۰۰۰</span> → <span class="final">۱۰۰,۰۰۰ تومان</span></span></div>
-<div class="price-item"><span>صندلی غذاخوری</span><span><span class="original">80,000</span> → <span class="final">65,000 تومان</span></span></div>
-<div class="price-item"><span>بالش بزرگ</span><span><span class="original">۶۰,۰۰۰</span> → <span class="final">۴۸,۰۰۰ تومان</span></span></div>
-<div class="price-item"><span>بالش کوچک</span><span><span class="original">۳۰,۰۰۰</span> → <span class="final">۲۴,۰۰۰ تومان</span></span></div>
-<div class="price-item"><span>زیره نشیمن</span><span><span class="original">۸۰,۰۰۰</span> → <span class="final">۶۴,۰۰۰ تومان</span></span></div>
-<div class="price-item"><span>تشک دونفره</span><span><span class="original">۱,۰۰۰,۰۰۰</span> → <span class="final">۸۰۰,۰۰۰ تومان</span></span></div>
-<div class="price-item"><span>فرش هر متر مربع</span><span><span class="original">۵۰,۰۰۰</span> → <span class="final">۴۰,۰۰۰ تومان</span></span></div>
-<div class="price-item"><span>مثال: فرش شش متری یا همان دو در سه</span><span><span class="original">۳۰۰,۰۰۰</span> → <span class="final">۲۴۰,۰۰۰ تومان</span></span></div>
+<div id="loginBox" class="login-box" style="display:none">
+  <h2>ورود مدیر</h2>
+  <label>رمز عبور مدیریت</label>
+  <input type="password" id="adminPass" placeholder="رمز عبور">
+  <label>GitHub Token (محرمانه)</label>
+  <input type="password" id="githubToken" placeholder="توکن خصوصی گیت‌هاب">
+  <button onclick="doLogin()">ورود</button>
+  <div class="msg" id="loginMsg"></div>
 </div>
-      <div class="price-item"><span>صندلی غذاخوری</span><span><span class="original">80,000</span> → <span class="final">65,000 تومان</span></span></div>
-      <div class="price-item"><span>بالش بزرگ</span><span><span class="original">۶۰,۰۰۰</span> → <span class="final">۴۸,۰۰۰ تومان</span></span></div>
-      <div class="price-item"><span>بالش کوچک</span><span><span class="original">۳۰,۰۰۰</span> → <span class="final">۲۴,۰۰۰ تومان</span></span></div>
-      <div class="price-item"><span>زیره نشیمن</span><span><span class="original">۸۰,۰۰۰</span> → <span class="final">۶۴,۰۰۰ تومان</span></span></div>
-      <div class="price-item"><span>تشک دونفره</span><span><span class="original">۱,۰۰۰,۰۰۰</span> → <span class="final">۸۰۰,۰۰۰ تومان</span></span></div>
-      <div class="price-item"><span>فرش هر متر مربع</span><span><span class="original">۵۰,۰۰۰</span> → <span class="final">۴۰,۰۰۰ تومان</span></span></div>
-      <div class="price-item"><span>مثال: فرش شش متری یا همان دو در سه</span><span><span class="original">۳۰۰,۰۰۰</span> → <span class="final">۲۴۰,۰۰۰ تومان</span></span></div>
+
+<div class="container" id="adminPanel" style="display:none">
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <h2>مدیریت محتوای سایت درخشان</h2>
+    <button class="logout-btn" onclick="logout()">خروج</button>
+  </div>
+  <form id="adminForm">
+    <div class="section">
+      <label>عنوان صفحه (title)</label>
+      <input id="siteTitle">
     </div>
-  </div>
-</section>
-
-<section id="gallery">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:20px">گالری واقعی ما</h2>
-    <div class="gallery-grid">
-
-      <figure>
-        <img src="https://i.postimg.cc/nz2268k0/3d013959-6596-4c50-89b5-3105ca979fc5.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/59PpgVjt/7293cb88-79a8-4a20-8ffb-31903168d762.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/dVbybQy8/4892911d-1e73-4593-ba8a-0b85d9406c13.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/Z5BNsvCb/7293cb88-79a8-4a20-8ffb-31903168d762.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/bv1tpXx4/farsh-shooyi.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/ydP33FrP/farsh-shooyi1.webp" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/Y0CG6h5w/ghazakhori.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/7htCmq4J/IMG-0022-Copy.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/jdCnCn6H/sandal1.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-
-      <figure>
-        <img src="https://i.postimg.cc/yY5gR6nw/sandali.jpg" alt="نمونه کار">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-    
-</div>
-  </div>
-</section>
-
-<section id="importance">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:20px">چرا باید مبل، تشک و فرش را حرفه‌ای بشوییم؟</h2>
-    <div class="importance-scroll"><style>.dancing-text {<br>    display: inline-block;<br>    font-size: 2.5em;<br>    font-weight: bold;<br>    color: #ff4081;<br>    position: relative;<br>    animation: dance 1s infinite alternate ease-in-out;<br>  }<br>  @keyframes dance {<br>    0%   { top: 0; }<br>    50%  { top: -15px; }<br>    100% { top: 0; }<br>  }<br></style><br><br><span class="dancing-text">درخشان</span></div><br></body><br></html></div>
-  </div>
-</section>
-
-<section id="reviews">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:30px">نظرات مشتریان واقعی</h2>
-    <div class="testimonial-grid">
-<div class="testimonial-card">مبل ۸ نفره‌مون مثل روز اول شد؛ قیمت هم عالی بود. خانم رحیمی</div>
-<div class="testimonial-card">فرش ۹ متری ۳۶۰ تومن شد؛ خشک‌شدنش زیر یک ساعت بود! آقای محمدی</div>
-<div class="testimonial-card">بالش بزرگ ۴۸ تومن؛ ولی هدیه لکه‌برش عالی بود. خانم کریمی</div>
-<div class="testimonial-card">تشک دونفره ۸۰۰ تومن؛ راضی نبودم پول ندادم. آقای علیزاده</div>
-<div class="testimonial-card">بچه‌ام دیگر شب‌ها سرفه نمی‌کند. تشک عاری از کنه شد. خانم سبحانی</div>
-<div class="testimonial-card">لکه قهوه روی مبل برق افتاد. واقعاً حرفه‌ای بودند. آقای رضایی</div>
-<div class="testimonial-card">مبلمان چرمی‌مون بدون آسیب شد مثل روز اول. خانم جعفری</div>
-<div class="testimonial-card">فرش ۱۲ متری ۴۸۰ تومن؛ قیمت شفاف و بدون پنهان‌کاری. آقای نوری</div>
-<div class="testimonial-card">زیره نشیمن ۶۴ تومن؛ دیگر لغزش نداریم. خانم رستمی</div>
-<div class="testimonial-card">سرعت کار و ادب تیم عالی بود. آقای حسینی</div>
-<div class="testimonial-card">بوی سیگار از مبل کاملاً رفت. واقعاً ممنون. خانم عزیزی</div>
-<div class="testimonial-card">فرش ابریشم بدون رنگ‌رفتگی تمیز شد. آقای غلامی</div>
-<div class="testimonial-card">بالاتر از انتظارم بود. حتماً توصیه می‌کنم. خانم موسوی</div>
-<div class="testimonial-card">مبل ۸ نفره کلاسیک بدون آب‌رفتگی شد نو. آقای رحمانی</div>
-<div class="testimonial-card">خدمات ۲۴ ساعته واقعاً به دردسر نمی‌خورد. خانم کاظمی</div>
-<div class="testimonial-card">قیمت‌ها روشن و بدون هزینه اضافه. آقای شریفی</div>
-<div class="testimonial-card">تشک نوزاد بدون بو و ضدعفونی شد. خانم مهدوی</div>
-<div class="testimonial-card">فرش دستباف بدون آسیب. آقای نجفی</div>
-<div class="testimonial-card">در کمتر از ۲ ساعت تحویل گرفتیم. خانم کریمیان</div>
-<div class="testimonial-card">هدیه لکه‌بر نانو ماندگار شد. آقای پورمحمد</div>
-<div class="testimonial-card">باورم نشد اینقدر سریع و تمیز شد. خانم شاهی</div>
-<div class="testimonial-card">تضمین رضایت واقعاً جدی است! آقای نادری</div>
-</div>
-      <div class="testimonial-card">فرش ۹ متری ۳۶۰ تومن شد؛ خشک‌شدنش زیر یک ساعت بود! آقای محمدی</div>
-      <div class="testimonial-card">بالش بزرگ ۴۸ تومن؛ ولی هدیه لکه‌برش عالی بود. خانم کریمی</div>
-      <div class="testimonial-card">تشک دونفره ۸۰۰ تومن؛ راضی نبودم پول ندادم. آقای علیزاده</div>
-      <div class="testimonial-card">بچه‌ام دیگر شب‌ها سرفه نمی‌کند. تشک عاری از کنه شد. خانم سبحانی</div>
-      <div class="testimonial-card">لکه قهوه روی مبل برق افتاد. واقعاً حرفه‌ای بودند. آقای رضایی</div>
-      <div class="testimonial-card">مبلمان چرمی‌مون بدون آسیب شد مثل روز اول. خانم جعفری</div>
-      <div class="testimonial-card">فرش ۱۲ متری ۴۸۰ تومن؛ قیمت شفاف و بدون پنهان‌کاری. آقای نوری</div>
-      <div class="testimonial-card">زیره نشیمن ۶۴ تومن؛ دیگر لغزش نداریم. خانم رستمی</div>
-      <div class="testimonial-card">سرعت کار و ادب تیم عالی بود. آقای حسینی</div>
-      <div class="testimonial-card">بوی سیگار از مبل کاملاً رفت. واقعاً ممنون. خانم عزیزی</div>
-      <div class="testimonial-card">فرش ابریشم بدون رنگ‌رفتگی تمیز شد. آقای غلامی</div>
-      <div class="testimonial-card">بالاتر از انتظارم بود. حتماً توصیه می‌کنم. خانم موسوی</div>
-      <div class="testimonial-card">مبل ۸ نفره کلاسیک بدون آب‌رفتگی شد نو. آقای رحمانی</div>
-      <div class="testimonial-card">خدمات ۲۴ ساعته واقعاً به دردسر نمی‌خورد. خانم کاظمی</div>
-      <div class="testimonial-card">قیمت‌ها روشن و بدون هزینه اضافه. آقای شریفی</div>
-      <div class="testimonial-card">تشک نوزاد بدون بو و ضدعفونی شد. خانم مهدوی</div>
-      <div class="testimonial-card">فرش دستباف بدون آسیب. آقای نجفی</div>
-      <div class="testimonial-card">در کمتر از ۲ ساعت تحویل گرفتیم. خانم کریمیان</div>
-      <div class="testimonial-card">هدیه لکه‌بر نانو ماندگار شد. آقای پورمحمد</div>
-      <div class="testimonial-card">باورم نشد اینقدر سریع و تمیز شد. خانم شاهی</div>
-      <div class="testimonial-card">تضمین رضایت واقعاً جدی است! آقای نادری</div>
+    <div class="section">
+      <label>شعار اصلی (هدر)</label>
+      <input id="heroTitle">
+      <label>توضیح هدر</label>
+      <input id="heroDesc">
     </div>
-  </div>
-</section>
+    <div class="section">
+      <label>لیست قیمت‌ها (هر خط: عنوان|قیمت قبلی|قیمت جدید)</label>
+      <textarea id="prices"></textarea>
+    </div>
+    <div class="section">
+      <label>آدرس تصاویر گالری (هر خط یک لینک)</label>
+      <textarea id="gallery"></textarea>
+      <div class="gallery-list" id="galleryPreview"></div>
+    </div>
+    <div class="section">
+      <label>توضیح اهمیت شستشو</label>
+      <textarea id="importance"></textarea>
+    </div>
+    <div class="section">
+      <label>نظرات مشتریان (هر خط یک نظر)</label>
+      <textarea id="reviews"></textarea>
+    </div>
+    <div class="section">
+      <label>اطلاعات تماس (HTML مجاز)</label>
+      <textarea id="contact"></textarea>
+    </div>
+    <button type="button" onclick="updateSite()">ثبت و بروزرسانی سایت</button>
+    <div class="msg" id="msg"></div>
+  </form>
+</div>
+<script>
+const CORRECT_PASS = "yourStrongAdminPass123"; // رمز عبور مدیریت - حتماً تغییر دهید
+const owner = "rezawin8410-ux";
+const repo = "mderakhshan.github.io";
+const file = "index.html";
 
-<section id="contact">
-  <div class="container contact-container">
-    <div><h3>تماس با درخشان</h3>
-      <p>تلفن / واتساپ: 09148178410</p>
-      <p>تلفن / واتساپ: 09104415400</p>
-      <p>ساعات: ۸ صبح تا ۱۲ شب، همه روزه (حتی تعطیل)</p>
-      <p>پوشش: تمام نقاط ارومیه – خدمات در محل</p>
-      <a href="https://wa.me/989148178410" class="cta-button">ارسال پیام در واتساپ</a></div>
-  </div>
-</section>
+function sha256(str) {
+  // ساده برای رمز عبور، کافی برای این سناریو
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function doLogin() {
+  let pass = document.getElementById("adminPass").value.trim();
+  let token = document.getElementById("githubToken").value.trim();
+  if(pass!==CORRECT_PASS) {
+    document.getElementById('loginMsg').innerText="رمز اشتباه است.";
+    return;
+  }
+  if(!token||token.length<30) {
+    document.getElementById('loginMsg').innerText="توکن گیت‌هاب معتبر وارد کنید.";
+    return;
+  }
+  localStorage.setItem("d_admin", sha256(pass));
+  sessionStorage.setItem("github_token", token);
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('adminPanel').style.display='block';
+  fetchCurrent();
+}
+function logout(){
+  localStorage.removeItem("d_admin");
+  sessionStorage.removeItem("github_token");
+  location.reload();
+}
+function checkLogin(){
+  let p = localStorage.getItem("d_admin");
+  if(p===sha256(CORRECT_PASS)){
+    document.getElementById('loginBox').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    fetchCurrent();
+  }else{
+    document.getElementById('loginBox').style.display='block';
+    document.getElementById('adminPanel').style.display='none';
+  }
+}
+checkLogin();
 
-<footer>
-  <div class="container">
-    <div style="font-weight:700;font-size:1.2rem;color:var(--accent)">درخشان ارومیه</div>
-    <p>۸ سال تجربه • تضمین رضایت • تخفیف مخصوص این ماه</p>
-    <p style="font-size:.9rem;margin-top:14px">© ۲۰۲۴ تمامی حقوق محفوظ است</p>
-  </div>
-</footer>
+function fetchCurrent(){
+  let token = sessionStorage.getItem("github_token");
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
+    headers: { Authorization: 'token ' + token }
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    let html = atob(data.content.replace(/\n/g,''));
+    // پراپرتی‌ها را از html بکش
+    document.getElementById('siteTitle').value = html.match(/<title>(.*?)<\/title>/)?.[1]||"";
+    document.getElementById('heroTitle').value = html.match(/<section class="hero">[\s\S]*?<h2>(.*?)<\/h2>/)?.[1]||"";
+    document.getElementById('heroDesc').value = html.match(/<section class="hero">[\s\S]*?<p>(.*?)<\/p>/)?.[1]||"";
+    let prices = [...html.matchAll(/<div class="price-item"><span>(.*?)<\/span><span><span class="original">(.*?)<\/span> → <span class="final">(.*?)<\/span><\/span><\/div>/g)]
+      .map(m=>`${m[1]}|${m[2]}|${m[3]}`).join('\n');
+    document.getElementById('prices').value = prices;
+    let gallery = [...html.matchAll(/<figure>[\s\S]*?<img src="(.*?)"/g)].map(m=>m[1]).join('\n');
+    document.getElementById('gallery').value = gallery;
+    let importance = html.match(/<section id="importance">[\s\S]*?<div class="importance-scroll">(.*?)<\/div>/)?.[1]?.replace(/<br>/g,"\n")||"";
+    document.getElementById('importance').value = importance;
+    let reviews = [...html.matchAll(/<div class="testimonial-card">(.*?)<\/div>/g)].map(m=>m[1]).join('\n');
+    document.getElementById('reviews').value = reviews;
+    let contact = html.match(/<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>([\s\S]*?)<\/div>/)?.[1]||"";
+    document.getElementById('contact').value = contact.replace(/^\s+|\s+$/g,"");
+    document.getElementById('msg').innerHTML = '';
+    // گالری پیش‌نمایش
+    previewGallery();
+  });
+}
+// پیش‌نمایش گالری
+function previewGallery(){
+  let imgs = document.getElementById('gallery').value.trim().split('\n').map(src=>src?`<img src="${src}">`:'').join('');
+  document.getElementById('galleryPreview').innerHTML = imgs;
+}
+document.getElementById('gallery').addEventListener('input', previewGallery);
 
+// آپدیت فایل index.html روی گیت‌هاب
+function updateSite(){
+  let token = sessionStorage.getItem("github_token");
+  if(!token){alert("ورود مجدد انجام دهید");return;}
+  document.getElementById('msg').innerHTML = 'در حال بروزرسانی...';
+  // دریافت SHA برای commit
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
+    headers: { Authorization: 'token ' + token }
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    let sha = data.sha;
+    let base = atob(data.content.replace(/\n/g,''));
+
+    // ساخت قیمت‌ها
+    let pricesArr = document.getElementById('prices').value.trim().split('\n').filter(x=>x);
+    let pricesHTML = pricesArr.map(row=>{
+      let [title, oldp, newp] = row.split('|');
+      return `<div class="price-item"><span>${title}</span><span><span class="original">${oldp}</span> → <span class="final">${newp}</span></span></div>`;
+    }).join('\n');
+    // گالری
+    let galleryArr = document.getElementById('gallery').value.trim().split('\n').filter(x=>x);
+    let galleryHTML = galleryArr.map(src=>`
+      <figure>
+        <img src="${src}" alt="نمونه کار">
+        <span class="brand-glow">مبل‌شویی درخشان</span>
+      </figure>
+    `).join('\n');
+    // نظرات
+    let reviewsArr = document.getElementById('reviews').value.trim().split('\n').filter(x=>x);
+    let reviewsHTML = reviewsArr.map(txt=>`<div class="testimonial-card">${txt}</div>`).join('\n');
+
+    // مقداردهی فیلدها
+    let newHtml = base
+      .replace(/<title>.*?<\/title>/, `<title>${document.getElementById('siteTitle').value}</title>`)
+      .replace(/(<section class="hero">[\s\S]*?<h2>)(.*?)(<\/h2>)/, `$1${document.getElementById('heroTitle').value}$3`)
+      .replace(/(<section class="hero">[\s\S]*?<p>)(.*?)(<\/p>)/, `$1${document.getElementById('heroDesc').value}$3`)
+      .replace(/<div class="price-table">[\s\S]*?<\/div>/, `<div class="price-table">\n${pricesHTML}\n</div>`)
+      .replace(/<div class="gallery-grid">[\s\S]*?<\/div>/, `<div class="gallery-grid">\n${galleryHTML}\n</div>`)
+      .replace(/<div class="importance-scroll">[\s\S]*?<\/div>/, `<div class="importance-scroll">${document.getElementById('importance').value.replace(/\n/g,"<br>")}</div>`)
+      .replace(/<div class="testimonial-grid">[\s\S]*?<\/div>/, `<div class="testimonial-grid">\n${reviewsHTML}\n</div>`)
+      .replace(/(<section id="contact">[\s\S]*?<div class="container contact-container">[\s\S]*?<div>)[\s\S]*?(<\/div>)/, `$1${document.getElementById('contact').value}$2`);
+
+    // آپدیت فایل در مخزن
+    let encoded = btoa(unescape(encodeURIComponent(newHtml)));
+    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${file}`, {
+      method: 'PUT',
+      headers: { Authorization: 'token ' + token, 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        message: 'بروزرسانی خودکار سایت از پنل مدیریت',
+        content: encoded,
+        sha: sha
+      })
+    })
+    .then(r=>r.json())
+    .then(res=>{
+      if(res.content){
+        document.getElementById('msg').innerHTML = '<span style="color:green">✅ تغییرات با موفقیت ثبت شد.<br>سایت شما تا چند دقیقه دیگر بروزرسانی می‌شود.</span>';
+      } else {
+        document.getElementById('msg').innerHTML = '<span style="color:red">خطا در ثبت تغییرات! توکن یا دسترسی اشتباه است.</span>';
+      }
+    });
+  });
+}
+</script>
 </body>
 </html>

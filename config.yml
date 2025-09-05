@@ -1,0 +1,9 @@
+backend:
+  name: github
+  repo: https://rezawin8410-ux.github.io/mderakhshan.github.io
+  branch: main
+  site_domain: mderakhshan.github.io
+  base_url: https://api.github.com
+  auth_endpoint: auth
+  client_id: Ov23ctqW9jNrWNdyv47Z
+  client_secret: 15802f9c1d6df885bbc1415c6da51a861e8faae8

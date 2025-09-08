@@ -2,790 +2,233 @@
 <html lang="fa-IR" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>درخشان – شستشوی مبل و تشک در محل ارومیه</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="شستشوی حرفه‌ای مبل، فرش و تشک با تضمین رضایت و قیمت شفاف در ارومیه. خدمات فوری، خشک‌شویی بدون جابجایی، هدیه لکه‌بر نانو.">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
-  <style>
-    :root { 
-      --primary:#00bfa5;
-      --accent:#ff6f00;
-      --text:#004d40;
-      --bg:#e0f7fa;
-      --light-bg:#f1f9fa;
-      --white:#ffffff;
-      --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    }
-    
-    * {
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Vazir', Tahoma, sans-serif;
-    }
-    
-    body {
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.8;
-      overflow-x: hidden;
-    }
-    
-    a {
-      text-decoration:none;
-      color: inherit;
-    }
-    
-    .container {
-      max-width:1200px;
-      margin:0 auto;
-      padding:0 20px;
-    }
-    
-    /* بخش معرفی دوستان */
-    .referral-section {
-      background: linear-gradient(135deg, #fff1e3 0%, #ffe0b2 100%);
-      margin: 0;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 2px 12px #ff6f0033;
-    }
-    
-    .referral-section h2 {
-      color: var(--accent);
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-    }
-    
-    .referral-section p {
-      font-size:1.1rem;
-      line-height:2;
-      color:var(--text);
-      margin-bottom: 20px;
-    }
-    
-    .code {
-      background:#ffe0b2;
-      padding:8px 16px;
-      border-radius:8px;
-      font-weight:700;
-      display: inline-block;
-      margin: 10px 0;
-    }
-    
-    .referral-section ul {
-      padding-right:20px;
-      margin:25px auto;
-      text-align:right;
-      max-width:380px;
-      list-style: none;
-    }
-    
-    .referral-section li {
-      margin-bottom:12px;
-      position: relative;
-      padding-right: 25px;
-    }
-    
-    .referral-section li:before {
-      content: "✓";
-      position: absolute;
-      right: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
-    
-    /* هدر */
-    header {
-      background:var(--primary);
-      color:#fff;
-      padding:18px 0;
-      position:sticky;
-      top:0;
-      z-index:1000;
-      box-shadow:0 1px 8px rgba(0,0,0,0.1);
-    }
-    
-    .header-content {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    
-    .logo {
-      font-weight:700;
-      font-size:1.4rem;
-      color:var(--accent);
-    }
-    
-    nav ul {
-      display:flex;
-      gap:22px;
-      list-style:none;
-      flex-wrap:wrap;
-    }
-    
-    nav a {
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      transition:.3s;
-      padding: 5px 0;
-      position: relative;
-    }
-    
-    nav a:hover {
-      color:var(--accent);
-    }
-    
-    nav a:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-    
-    nav a:hover:after {
-      width: 100%;
-    }
-    
-    /* بخش هیرو */
-    .hero {
-      background: linear-gradient(135deg, var(--primary), #00897b);
-      color:#fff;
-      min-height:65vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      box-shadow:0 1px 16px rgba(0,0,0,0.2);
-      padding: 40px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-      background-size: cover;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      z-index: 1;
-    }
-    
-    .hero h2 {
-      font-size:2.8rem;
-      margin-bottom:20px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-    
-    .hero p {
-      font-size:1.2rem;
-      margin-bottom:30px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .cta-button {
-      background:var(--accent);
-      color:#fff;
-      padding:15px 35px;
-      border-radius:50px;
-      font-size:1.15rem;
-      text-decoration:none;
-      font-weight:700;
-      transition:all 0.3s ease;
-      display: inline-block;
-      box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
-    }
-    
-    .cta-button:hover {
-      background-color:#ff9100;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(255, 111, 0, 0.4);
-    }
-    
-    /* بخش قیمت‌ها */
-    .prices-section {
-      padding: 70px 0;
-      background: var(--light-bg);
-    }
-    
-    .section-title {
-      text-align:center;
-      margin-bottom:50px;
-      font-size: 2.2rem;
-      color: var(--primary);
-      position: relative;
-      padding-bottom: 15px;
-    }
-    
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 50%;
-      transform: translateX(50%);
-      width: 80px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-    
-    .price-table {
-      display:grid;
-      gap:15px;
-      margin-top:38px;
-      font-size:1.08rem;
-    }
-    
-    .price-item {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#fff;
-      border-radius:15px;
-      padding:20px 30px;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
-    
-    .price-item:hover {
-      transform: translateY(-5px);
-    }
-    
-    .original {
-      text-decoration:line-through;
-      color:#777;
-      font-size: 0.95rem;
-    }
-    
-    .final {
-      color:var(--primary);
-      font-weight:700;
-      font-size:1.15rem;
-    }
-    
-    /* گالری */
-    .gallery-section {
-      padding: 70px 0;
-      background: var(--white);
-    }
-    
-    .gallery-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:25px;
-      position:relative;
-    }
-    
-    .gallery-grid figure {
-      position:relative;
-      border-radius:15px;
-      overflow:hidden;
-      box-shadow:0 4px 15px rgba(0,0,0,0.09);
-      transition: transform 0.3s ease;
-    }
-    
-    .gallery-grid figure:hover {
-      transform: scale(1.03);
-    }
-    
-    .gallery-grid img {
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .gallery-grid figure:hover img {
-      transform: scale(1.1);
-    }
-    
-    .brand-glow {
-      font-size:1.05rem;
-      font-weight:700;
-      color:#fff;
-      background:rgba(0,191,165,0.85);
-      padding:8px 15px;
-      border-radius:8px;
-      position:absolute;
-      bottom:15px;
-      right:15px;
-      animation:glow 2s ease-in-out infinite;
-    }
-    
-    @keyframes glow {
-      0% { box-shadow: 0 0 5px rgba(0,191,165,0.7); }
-      50% { box-shadow: 0 0 15px rgba(0,191,165,0.9), 0 0 20px rgba(255,215,0,0.6); }
-      100% { box-shadow: 0 0 5px rgba(0,191,165,0.7); }
-    }
-    
-    /* اهمیت شستشو */
-    .importance-section {
-      padding: 70px 0;
-      background: var(--light-bg);
-    }
-    
-    .importance-scroll {
-      height:260px;
-      overflow-y:auto;
-      border-radius:15px;
-      background:#fff;
-      color:var(--text);
-      padding:25px 30px;
-      font-size:1.1rem;
-      line-height:2;
-      box-shadow: var(--shadow);
-      border-right: 4px solid var(--accent);
-    }
-    
-    .importance-scroll::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    .importance-scroll::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 4px;
-    }
-    
-    .importance-scroll::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 4px;
-    }
-    
-    /* نظرات */
-    .reviews-section {
-      padding: 70px 0;
-      background: var(--white);
-    }
-    
-    .testimonial-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:25px;
-    }
-    
-    .testimonial-card {
-      background:#fff;
-      border-right:4px solid var(--accent);
-      border-radius:15px;
-      padding:25px;
-      font-size:1rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
-    
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    /* تماس */
-    .contact-section {
-      padding: 70px 0;
-      background: var(--light-bg);
-    }
-    
-    .contact-container {
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      margin-top:36px;
-    }
-    
-    .contact-info {
-      background:#fff;
-      border-radius:15px;
-      box-shadow: var(--shadow);
-      padding:30px;
-      min-width:300px;
-      text-align: center;
-    }
-    
-    .contact-info h3 {
-      color:var(--primary);
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-    
-    .contact-info p {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-    
-    .contact-info a.cta-button {
-      display:inline-block;
-      margin-top:20px;
-    }
-    
-    /* فوتر */
-    footer {
-      background:#00897b;
-      color:#fff;
-      padding:50px 0 30px 0;
-      text-align:center;
-    }
-    
-    footer .container {
-      max-width:720px;
-    }
-    
-    .footer-logo {
-      font-weight:700;
-      font-size:1.6rem;
-      color:var(--accent);
-      margin-bottom: 15px;
-    }
-    
-    footer p {
-      margin-bottom: 10px;
-    }
-    
-    .copyright {
-      font-size:0.9rem;
-      margin-top:25px;
-      opacity: 0.8;
-    }
-    
-    /* رسپانسیو */
-    @media(max-width:768px){
-      .header-content {
-        flex-direction:column;
-        align-items:center;
-        gap:15px;
-      }
-      
-      nav ul {
-        gap:15px;
-        justify-content: center;
-      }
-      
-      .hero {
-        min-height:50vh;
-        padding: 30px 20px;
-      }
-      
-      .hero h2 {
-        font-size:2rem;
-      }
-      
-      .hero p {
-        font-size:1.1rem;
-      }
-      
-      .importance-scroll {
-        height:auto;
-        max-height: 300px;
-      }
-      
-      .contact-container {
-        flex-direction:column;
-        align-items:center;
-      }
-      
-      .contact-info {
-        width: 100%;
-        max-width: 400px;
-      }
-      
-      .price-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .price-item > span {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-    }
-    
-    @media(max-width:480px){
-      nav ul {
-        gap:10px;
-      }
-      
-      nav a {
-        font-size: 0.9rem;
-      }
-      
-      .hero h2 {
-        font-size:1.7rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .testimonial-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    /* انیمیشن‌ها */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
-    
-    .delay-1 { animation-delay: 0.2s; }
-    .delay-2 { animation-delay: 0.4s; }
-    .delay-3 { animation-delay: 0.6s; }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/vazirmatn@1.0.0/dist/font-face.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-
-<!-- بخش معرفی دوستان -->
-<section class="referral-section">
-  <div class="container">
-    <h2>🎁 دوست‌یابی رایگان!</h2>
-    <p>
-      دوستان خود را با <strong>کد معرف «درخشان»</strong> به ما معرفی کن و مبل رایگان بگیر:
-      <span class="code">
-        کد معرف: <span style="color:#ff6f00">DERAKHSHAN</span>
-      </span>
-    </p>
-    <ul>
-      <li>هر نفر معرفی‌شده = یک <strong>نفــره مبل رایگان</strong> برای شما</li>
-      <li>معرفی ۸ نفر = یک دست مبل <strong>۸ نفره کاملاً رایگان</strong></li>
-      <li>بدون محدودیت تعداد معرفی‌ها</li>
-    </ul>
-    <a href="#contact" class="cta-button">همین حالا شروع کن</a>
-  </div>
-</section>
-
-<header>
-  <div class="container header-content">
-    <div class="logo">درخشان ارومیه</div>
-    <nav>
-      <ul>
-        <li><a href="#prices">قیمت‌ها</a></li>
-        <li><a href="#gallery">گالری</a></li>
-        <li><a href="#importance">چرا بشوریم؟</a></li>
-        <li><a href="#reviews">نظرات</a></li>
-        <li><a href="#contact">تماس</a></li>
-      </ul>
+  <div id="app">
+    <header>
+      <div class="toolbar">
+        <button id="drawer-toggle" aria-label="Toggle navigation drawer">
+          <span class="material-icons">menu</span>
+        </button>
+        <div class="logo">درخشان ارومیه</div>
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <span class="material-icons">brightness_6</span>
+        </button>
+      </div>
+      <nav id="drawer" class="hidden">
+        <ul>
+          <li><a href="#prices">قیمت‌ها</a></li>
+          <li><a href="#gallery">گالری</a></li>
+          <li><a href="#importance">چرا بشوریم؟</a></li>
+          <li><a href="#reviews">نظرات</a></li>
+          <li><a href="#contact">تماس</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="referral-section" class="section referral-section">
+        <div class="container">
+          <h2>🎁 دوست‌یابی رایگان!</h2>
+          <p>
+            دوستان خود را با کد معرف «درخشان» به ما معرفی کن و مبل رایگان بگیر:
+            <span class="code">
+              کد معرف: <span id="referral-code">DERAKHSHAN</span>
+            </span>
+          </p>
+          <ul>
+            <li>هر نفر معرفی‌شده = یک نفــره مبل رایگان برای شما</li>
+            <li>معرفی ۸ نفر = یک دست مبل ۸ نفره کاملاً رایگان</li>
+            <li>بدون محدودیت تعداد معرفی‌ها</li>
+          </ul>
+          <button id="fab" class="fab" aria-label="ایجاد کد معرف">
+            <span class="material-icons">add</span>
+          </button>
+          <div id="bottom-sheet" class="bottom-sheet hidden">
+            <form id="invite-form">
+              <div class="form-group">
+                <label for="first-name">نام</label>
+                <input type="text" id="first-name" required>
+                <span class="error-message" id="first-name-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="last-name">نام خانوادگی</label>
+                <input type="text" id="last-name" required>
+                <span class="error-message" id="last-name-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone-number">شماره تماس</label>
+                <input type="tel" id="phone-number" pattern="[\u06F0-\u06F90-9]{11}" required>
+                <span class="error-message" id="phone-number-error"></span>
+              </div>
+              <button type="submit" class="cta-button">ایجاد کد معرف</button>
+            </form>
+            <div id="generated-code" class="generated-code hidden">
+              <canvas id="lottie-canvas"></canvas>
+              <p>کد معرف شما:</p>
+              <div class="code-display">
+                <span id="generated-referral-code"></span>
+                <button id="copy-code" class="cta-button">کپی</button>
+                <button id="share-code" class="cta-button">اشتراک‌گذاری</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="prices" class="section prices-section">
+        <div class="container">
+          <h2 class="section-title">قیمت‌ها با تخفیف مخصوص این ماه</h2>
+          <div class="price-table">
+            <div class="price-item">
+              <span>هر نفره مبل</span>
+              <span><span class="original">۱۲۵,۰۰۰</span> → <span class="final">۱۰۰,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>صندلی غذاخوری</span>
+              <span><span class="original">۸۰,۰۰۰</span> → <span class="final">۶۵,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>بالش بزرگ</span>
+              <span><span class="original">۶۰,۰۰۰</span> → <span class="final">۴۸,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>بالش کوچک</span>
+              <span><span class="original">۳۰,۰۰۰</span> → <span class="final">۲۴,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>زیره نشیمن</span>
+              <span><span class="original">۸۰,۰۰۰</span> → <span class="final">۶۴,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>تشک دونفره</span>
+              <span><span class="original">۱,۰۰۰,۰۰۰</span> → <span class="final">۸۰۰,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>فرش هر متر مربع</span>
+              <span><span class="original">۵۰,۰۰۰</span> → <span class="final">۴۰,۰۰۰ تومان</span></span>
+            </div>
+            <div class="price-item">
+              <span>مثال: فرش شش متری یا همان دو در سه</span>
+              <span><span class="original">۳۰۰,۰۰۰</span> → <span class="final">۲۴۰,۰۰۰ تومان</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="gallery" class="section gallery-section">
+        <div class="container">
+          <h2 class="section-title">گالری واقعی ما</h2>
+          <div class="gallery-grid">
+            <figure>
+              <img src="https://i.postimg.cc/nz2268k0/3d013959-6596-4c50-89b5-3105ca979fc5.jpg" alt="نمونه کار شستشوی مبل">
+              <span class="brand-glow">مبل‌شویی درخشان</span>
+            </figure>
+            <figure>
+              <img src="https://i.postimg.cc/59PpgVjt/7293cb88-79a8-4a20-8ffb-31903168d762.jpg" alt="نمونه کار شستشوی مبل">
+              <span class="brand-glow">مبل‌شویی درخشان</span>
+            </figure>
+            <figure>
+              <img src="https://i.postimg.cc/dVbybQy8/4892911d-1e73-4593-ba8a-0b85d9406c13.jpg" alt="نمونه کار شستشوی مبل">
+              <span class="brand-glow">مبل‌شویی درخشان</span>
+            </figure>
+            <figure>
+              <img src="https://i.postimg.cc/Z5BNsvCb/7293cb88-79a8-4a20-8ffb-31903168d762.jpg" alt="نمونه کار شستشوی مبل">
+              <span class="brand-glow">مبل‌شویی درخشان</span>
+            </figure>
+            <figure>
+              <img src="https://i.postimg.cc/bv1tpXx4/farsh-shooyi.jpg" alt="نمونه کار شستشوی فرش">
+              <span class="brand-glow">فرش‌شویی درخشان</span>
+            </figure>
+            <figure>
+              <img src="https://i.postimg.cc/ydP33FrP/farsh-shooyi1.webp" alt="نمونه کار شستشوی فرش">
+              <span class="brand-glow">فرش‌شویی درخشان</span>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section id="importance" class="section importance-section">
+        <div class="container">
+          <h2 class="section-title">چرا باید مبل، تشک و فرش را حرفه‌ای بشوییم؟</h2>
+          <div class="importance-scroll">
+            <p>شستشوی حرفه‌ای مبلمان و فرش نه تنها باعث زیبایی و طراوت منزل شما می‌شود، بلکه از نظر بهداشتی نیز بسیار حائز اهمیت است. در ادامه به برخی از دلایل مهم شستشوی حرفه‌ای اشاره می‌کنیم:</p>
+            <p>✅ <strong>حذف آلرژی‌ها</strong>: گرد و غبار، کنه‌ها و سایر آلرژن‌ها در عمق مبلمان و فرش‌ها نفوذ می‌کنند و می‌توانند باعث ایجاد حساسیت و مشکلات تنفسی شوند.</p>
+            <p>✅ <strong>از بین بردن باکتری‌ها و میکروب‌ها</strong>: سطوح مبلمان و فرش‌ها می‌توانند حاوی انواع باکتری و میکروب باشند که با شستشوی اصولی از بین می‌روند.</p>
+            <p>✅ <strong>افزایش طول عمر</strong>: شستشوی اصولی و استفاده از مواد مناسب باعث افزایش عمر مفید مبلمان و فرش‌های شما می‌شود.</p>
+            <p>✅ <strong>حذف لکه‌های سرج</strong>: برخی لکه‌ها با شستشوی عادی از بین نمی‌روند و نیاز به تخصص و مواد ویژه دارند.</p>
+            <p>✅ <strong>بوی مطبوع</strong>: بعد از شستشوی حرفه‌ای، فضای منزل شما از بوی مطبوع و تازگی برخوردار خواهد شد.</p>
+            <p>✅ <strong>صرفه‌جویی در وقت و انرژی</strong>: شستشوی حرفه‌ای در محل، بدون نیاز به جابجایی وسایل، در وقت و انرژی شما صرفه‌جویی می‌کند.</p>
+          </div>
+        </div>
+      </section>
+      <section id="reviews" class="section reviews-section">
+        <div class="container">
+          <h2 class="section-title">نظرات مشتریان واقعی</h2>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <p>مبل ۸ نفره‌مون مثل روز اول شد؛ قیمت هم عالی بود.</p>
+              <p class="client">- خانم رحیمی</p>
+            </div>
+            <div class="testimonial-card">
+              <p>فرش ۹ متری ۳۶۰ تومن شد؛ خشک‌شدنش زیر یک ساعت بود!</p>
+              <p class="client">- آقای محمدی</p>
+            </div>
+            <div class="testimonial-card">
+              <p>بالش بزرگ ۴۸ تومن؛ ولی هدیه لکه‌برش عالی بود.</p>
+              <p class="client">- خانم کریمی</p>
+            </div>
+            <div class="testimonial-card">
+              <p>تشک دونفره ۸۰۰ تومن؛ راضی نبودم پول ندادم.</p>
+              <p class="client">- آقای علیزاده</p>
+            </div>
+            <div class="testimonial-card">
+              <p>بچه‌ام دیگر شب‌ها سرفه نمی‌کند. تشک عاری از کنه شد.</p>
+              <p class="client">- خانم سبحانی</p>
+            </div>
+            <div class="testimonial-card">
+              <p>لکه قهوه روی مبل برق افتاد. واقعاً حرفه‌ای بودند.</p>
+              <p class="client">- آقای رضایی</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="section contact-section">
+        <div class="container">
+          <h2 class="section-title">تماس با ما</h2>
+          <div class="contact-container">
+            <div class="contact-info">
+              <h3>درخشان ارومیه</h3>
+              <p>تلفن / واتساپ: ۰۹۱۴۸۱۷۸۴۱۰</p>
+              <p>تلفن / واتساپ: ۰۹۱۰۴۴۱۵۴۰۰</p>
+              <p>ساعات: ۸ صبح تا ۱۲ شب، همه روزه (حتی تعطیل)</p>
+              <p>پوشش: تمام نقاط ارومیه – خدمات در محل</p>
+              <a href="https://wa.me/989148178410" class="cta-button">ارسال پیام در واتساپ</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-logo">درخشان ارومیه</div>
+        <p>۸ سال تجربه • تضمین رضایت • تخفیف مخصوص این ماه</p>
+        <p class="copyright">© ۲۰۲۴ تمامی حقوق محفوظ است</p>
+      </div>
+    </footer>
+    <nav class="bottom-nav">
+      <a href="#prices"><span class="material-icons">attach_money</span></a>
+      <a href="#gallery"><span class="material-icons">image</span></a>
+      <a href="#importance"><span class="material-icons">info</span></a>
+      <a href="#reviews"><span class="material-icons">star</span></a>
+      <a href="#contact"><span class="material-icons">contact_phone</span></a>
     </nav>
   </div>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h2 class="fade-in">مبل، تشک، فرش → مثل روز اولش کن!</h2>
-    <p class="fade-in delay-1">بدون جابجایی، با تضمین رضایت 💯٪؛ اگر خوشت نیومد پول نمی‌گیریم.</p>
-    <a href="#contact" class="cta-button fade-in delay-2">همین حالا تماس بگیر</a>
-  </div>
-</section>
-
-<section id="prices" class="prices-section">
-  <div class="container">
-    <h2 class="section-title">قیمت‌ها با تخفیف مخصوص این ماه</h2>
-    <div class="price-table">
-      <div class="price-item fade-in">
-        <span>هر نفره مبل</span>
-        <span><span class="original">۱۲۵,۰۰۰</span> → <span class="final">۱۰۰,۰۰۰ تومان</span></span>
-      </div>
-      <div class="price-item fade-in delay-1">
-        <span>صندلی غذاخوری</span>
-        <span><span class="original">80,000</span> → <span class="final">65,000 تومان</span></span>
-      </div>
-      <div class="price-item fade-in delay-1">
-        <span>بالش بزرگ</span>
-        <span><span class="original">۶۰,۰۰۰</span> → <span class="final">۴۸,۰۰۰ تومان</span></span>
-      </div>
-      <div class="price-item fade-in delay-2">
-        <span>بالش کوچک</span>
-        <span><span class="original">۳۰,۰۰۰</span> → <span class="final">۲۴,۰۰۰ تومان</span></span>
-      </div>
-      <div class="price-item fade-in delay-2">
-        <span>زیره نشیمن</span>
-        <span><span class="original">۸۰,۰۰۰</span> → <span class="final">۶۴,۰۰۰ تومان</span></span>
-      </div>
-      <div class="price-item fade-in delay-3">
-        <span>تشک دونفره</span>
-        <span><span class="original">۱,۰۰۰,۰۰۰</span> → <span class="final">۸۰۰,۰۰۰ تومان</span></span>
-      </div>
-      <div class="price-item fade-in delay-3">
-        <span>فرش هر متر مربع</span>
-        <span><span class="original">۵۰,۰۰۰</span> → <span class="final">۴۰,۰۰۰ تومان</span></span>
-      </div>
-      <div class="price-item fade-in">
-        <span>مثال: فرش شش متری یا همان دو در سه</span>
-        <span><span class="original">۳۰۰,۰۰۰</span> → <span class="final">۲۴۰,۰۰۰ تومان</span></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="gallery" class="gallery-section">
-  <div class="container">
-    <h2 class="section-title">گالری واقعی ما</h2>
-    <div class="gallery-grid">
-      <figure class="fade-in">
-        <img src="https://i.postimg.cc/nz2268k0/3d013959-6596-4c50-89b5-3105ca979fc5.jpg" alt="نمونه کار شستشوی مبل">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-      <figure class="fade-in delay-1">
-        <img src="https://i.postimg.cc/59PpgVjt/7293cb88-79a8-4a20-8ffb-31903168d762.jpg" alt="نمونه کار شستشوی مبل">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-      <figure class="fade-in delay-1">
-        <img src="https://i.postimg.cc/dVbybQy8/4892911d-1e73-4593-ba8a-0b85d9406c13.jpg" alt="نمونه کار شستشوی مبل">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-      <figure class="fade-in delay-2">
-        <img src="https://i.postimg.cc/Z5BNsvCb/7293cb88-79a8-4a20-8ffb-31903168d762.jpg" alt="نمونه کار شستشوی مبل">
-        <span class="brand-glow">مبل‌شویی درخشان</span>
-      </figure>
-      <figure class="fade-in delay-2">
-        <img src="https://i.postimg.cc/bv1tpXx4/farsh-shooyi.jpg" alt="نمونه کار شستشوی فرش">
-        <span class="brand-glow">فرش‌شویی درخشان</span>
-      </figure>
-      <figure class="fade-in delay-3">
-        <img src="https://i.postimg.cc/ydP33FrP/farsh-shooyi1.webp" alt="نمونه کار شستشوی فرش">
-        <span class="brand-glow">فرش‌شویی درخشان</span>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section id="importance" class="importance-section">
-  <div class="container">
-    <h2 class="section-title">چرا باید مبل، تشک و فرش را حرفه‌ای بشوییم؟</h2>
-    <div class="importance-scroll fade-in">
-      <p>شستشوی حرفه‌ای مبلمان و فرش نه تنها باعث زیبایی و طراوت منزل شما می‌شود، بلکه از نظر بهداشتی نیز بسیار حائز اهمیت است. در ادامه به برخی از دلایل مهم شستشوی حرفه‌ای اشاره می‌کنیم:</p>
-      <br>
-      <p>✅ <strong>حذف آلرژی‌ها</strong>: گرد و غبار، کنه‌ها و سایر آلرژن‌ها در عمق مبلمان و فرش‌ها نفوذ می‌کنند و می‌توانند باعث ایجاد حساسیت و مشکلات تنفسی شوند.</p>
-      <br>
-      <p>✅ <strong>از بین بردن باکتری‌ها و میکروب‌ها</strong>: سطوح مبلمان و فرش‌ها می‌توانند حاوی انواع باکتری و میکروب باشند که با شستشوی اصولی از بین می‌روند.</p>
-      <br>
-      <p>✅ <strong>افزایش طول عمر</strong>: شستشوی اصولی و استفاده از مواد مناسب باعث افزایش عمر مفید مبلمان و فرش‌های شما می‌شود.</p>
-      <br>
-      <p>✅ <strong>حذف لکه‌های سمج</strong>: برخی لکه‌ها با شستشوی عادی از بین نمی‌روند و نیاز به تخصص و مواد ویژه دارند.</p>
-      <br>
-      <p>✅ <strong>بوی مطبوع</strong>: بعد از شستشوی حرفه‌ای، فضای منزل شما از بوی مطبوع و تازگی برخوردار خواهد شد.</p>
-      <br>
-      <p>✅ <strong>صرفه‌جویی در وقت و انرژی</strong>: شستشوی حرفه‌ای در محل، بدون نیاز به جابجایی وسایل، در وقت و انرژی شما صرفه‌جویی می‌کند.</p>
-    </div>
-  </div>
-</section>
-
-<section id="reviews" class="reviews-section">
-  <div class="container">
-    <h2 class="section-title">نظرات مشتریان واقعی</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card fade-in">
-        <p>مبل ۸ نفره‌مون مثل روز اول شد؛ قیمت هم عالی بود.</p>
-        <p class="client">- خانم رحیمی</p>
-      </div>
-      <div class="testimonial-card fade-in delay-1">
-        <p>فرش ۹ متری ۳۶۰ تومن شد؛ خشک‌شدنش زیر یک ساعت بود!</p>
-        <p class="client">- آقای محمدی</p>
-      </div>
-      <div class="testimonial-card fade-in delay-1">
-        <p>بالش بزرگ ۴۸ تومن؛ ولی هدیه لکه‌برش عالی بود.</p>
-        <p class="client">- خانم کریمی</p>
-      </div>
-      <div class="testimonial-card fade-in delay-2">
-        <p>تشک دونفره ۸۰۰ تومن؛ راضی نبودم پول ندادم.</p>
-        <p class="client">- آقای علیزاده</p>
-      </div>
-      <div class="testimonial-card fade-in delay-2">
-        <p>بچه‌ام دیگر شب‌ها سرفه نمی‌کند. تشک عاری از کنه شد.</p>
-        <p class="client">- خانم سبحانی</p>
-      </div>
-      <div class="testimonial-card fade-in delay-3">
-        <p>لکه قهوه روی مبل برق افتاد. واقعاً حرفه‌ای بودند.</p>
-        <p class="client">- آقای رضایی</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact-section">
-  <div class="container">
-    <h2 class="section-title">تماس با ما</h2>
-    <div class="contact-container">
-      <div class="contact-info fade-in">
-        <h3>درخشان ارومیه</h3>
-        <p>تلفن / واتساپ: 09148178410</p>
-        <p>تلفن / واتساپ: 09104415400</p>
-        <p>ساعات: ۸ صبح تا ۱۲ شب، همه روزه (حتی تعطیل)</p>
-        <p>پوشش: تمام نقاط ارومیه – خدمات در محل</p>
-        <a href="https://wa.me/989148178410" class="cta-button">ارسال پیام در واتساپ</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div class="footer-logo">درخشان ارومیه</div>
-    <p>۸ سال تجربه • تضمین رضایت • تخفیف مخصوص این ماه</p>
-    <p class="copyright">© ۲۰۲۴ تمامی حقوق محفوظ است</p>
-  </div>
-</footer>
-
-<script>
-  // افزودن کلاس‌های انیمیشن هنگام اسکرول
-  document.addEventListener('DOMContentLoaded', function() {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    fadeElements.forEach(element => {
-      element.style.opacity = 0;
-      element.style.transform = 'translateY(20px)';
-      element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      observer.observe(element);
-    });
-    
-    // هموار کردن اسکرول برای لینک‌های داخلی
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  });
-</script>
-
+  <script src="js/app.js"></script>
+  <script src="js/invite.js"></script>
+  <script src="js/sw.js"></script>
 </body>
 </html>

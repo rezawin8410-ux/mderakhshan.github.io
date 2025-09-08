@@ -1,0 +1,120 @@
+/* Theme-specific styles */
+body.light-theme {
+  background: var(--bg-light);
+  color: var(--text);
+}
+
+body.dark-theme {
+  background: var(--bg-dark);
+  color: white;
+}
+
+.toolbar.light-theme {
+  background: var(--primary);
+  color: white;
+}
+
+.toolbar.dark-theme {
+  background: var(--primary);
+  color: white;
+}
+
+.section.light-theme {
+  background: var(--surface-light);
+}
+
+.section.dark-theme {
+  background: var(--surface-dark);
+}
+
+.price-item.light-theme {
+  background: white;
+}
+
+.price-item.dark-theme {
+  background: #212121;
+}
+
+.gallery-grid figure.light-theme {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.09);
+}
+
+.gallery-grid figure.dark-theme {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.importance-scroll.light-theme {
+  background: white;
+  color: var(--text);
+}
+
+.importance-scroll.dark-theme {
+  background: #212121;
+  color: white;
+}
+
+.testimonial-card.light-theme {
+  background: white;
+}
+
+.testimonial-card.dark-theme {
+  background: #212121;
+}
+
+.contact-info.light-theme {
+  background: white;
+}
+
+.contact-info.dark-theme {
+  background: #212121;
+}
+
+footer.light-theme {
+  background: #00897B;
+  color: white;
+}
+
+footer.dark-theme {
+  background: #00897B;
+  color: white;
+}
+
+.bottom-nav.light-theme {
+  background: white;
+}
+
+.bottom-nav.dark-theme {
+  background: #212121;
+}
+
+.bottom-nav a.light-theme {
+  color: var(--text);
+}
+
+.bottom-nav a.dark-theme {
+  color: white;
+}
+
+.bottom-nav a.active.light-theme {
+  color: var(--primary);
+}
+
+.bottom-nav a.active.dark-theme {
+  color: var(--primary);
+}
+
+.fab.light-theme {
+  background: var(--primary);
+}
+
+.fab.dark-theme {
+  background: var(--primary);
+}
+
+.bottom-sheet.light-theme {
+  background: white;
+}
+
+.bottom-sheet.dark-theme {
+  background: #212121;
+}
